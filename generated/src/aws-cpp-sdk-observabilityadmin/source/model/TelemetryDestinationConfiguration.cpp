@@ -50,6 +50,10 @@ TelemetryDestinationConfiguration& TelemetryDestinationConfiguration::operator=(
     m_logDeliveryParameters = jsonValue.GetObject("LogDeliveryParameters");
     m_logDeliveryParametersHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("MskMonitoringParameters")) {
+    m_mskMonitoringParameters = jsonValue.GetObject("MskMonitoringParameters");
+    m_mskMonitoringParametersHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -86,6 +90,10 @@ JsonValue TelemetryDestinationConfiguration::Jsonize() const {
 
   if (m_logDeliveryParametersHasBeenSet) {
     payload.WithObject("LogDeliveryParameters", m_logDeliveryParameters.Jsonize());
+  }
+
+  if (m_mskMonitoringParametersHasBeenSet) {
+    payload.WithObject("MskMonitoringParameters", m_mskMonitoringParameters.Jsonize());
   }
 
   return payload;

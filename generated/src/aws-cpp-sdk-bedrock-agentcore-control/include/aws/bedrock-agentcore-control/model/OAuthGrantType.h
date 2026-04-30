@@ -10,7 +10,7 @@
 namespace Aws {
 namespace BedrockAgentCoreControl {
 namespace Model {
-enum class OAuthGrantType { NOT_SET, CLIENT_CREDENTIALS, AUTHORIZATION_CODE };
+enum class OAuthGrantType { NOT_SET, CLIENT_CREDENTIALS, AUTHORIZATION_CODE, TOKEN_EXCHANGE };
 
 namespace OAuthGrantTypeMapper {
 AWS_BEDROCKAGENTCORECONTROL_API OAuthGrantType GetOAuthGrantTypeForName(const Aws::String& name);

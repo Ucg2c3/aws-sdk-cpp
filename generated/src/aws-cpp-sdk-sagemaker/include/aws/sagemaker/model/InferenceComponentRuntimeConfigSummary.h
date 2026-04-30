@@ -4,7 +4,11 @@
  */
 
 #pragma once
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/sagemaker/SageMaker_EXPORTS.h>
+#include <aws/sagemaker/model/InferenceComponentPlacementStatus.h>
+
+#include <utility>
 
 namespace Aws {
 namespace Utils {
@@ -62,12 +66,40 @@ class InferenceComponentRuntimeConfigSummary {
     return *this;
   }
   ///@}
+
+  ///@{
+  /**
+   * <p>The placement status of the inference component across instance types. Shows
+   * how the inference component copies are distributed across instance types.</p>
+   */
+  inline const Aws::Vector<InferenceComponentPlacementStatus>& GetPlacementStatus() const { return m_placementStatus; }
+  inline bool PlacementStatusHasBeenSet() const { return m_placementStatusHasBeenSet; }
+  template <typename PlacementStatusT = Aws::Vector<InferenceComponentPlacementStatus>>
+  void SetPlacementStatus(PlacementStatusT&& value) {
+    m_placementStatusHasBeenSet = true;
+    m_placementStatus = std::forward<PlacementStatusT>(value);
+  }
+  template <typename PlacementStatusT = Aws::Vector<InferenceComponentPlacementStatus>>
+  InferenceComponentRuntimeConfigSummary& WithPlacementStatus(PlacementStatusT&& value) {
+    SetPlacementStatus(std::forward<PlacementStatusT>(value));
+    return *this;
+  }
+  template <typename PlacementStatusT = InferenceComponentPlacementStatus>
+  InferenceComponentRuntimeConfigSummary& AddPlacementStatus(PlacementStatusT&& value) {
+    m_placementStatusHasBeenSet = true;
+    m_placementStatus.emplace_back(std::forward<PlacementStatusT>(value));
+    return *this;
+  }
+  ///@}
  private:
   int m_desiredCopyCount{0};
 
   int m_currentCopyCount{0};
+
+  Aws::Vector<InferenceComponentPlacementStatus> m_placementStatus;
   bool m_desiredCopyCountHasBeenSet = false;
   bool m_currentCopyCountHasBeenSet = false;
+  bool m_placementStatusHasBeenSet = false;
 };
 
 }  // namespace Model

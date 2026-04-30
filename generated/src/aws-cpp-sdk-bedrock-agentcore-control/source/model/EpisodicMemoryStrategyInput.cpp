@@ -38,6 +38,10 @@ EpisodicMemoryStrategyInput& EpisodicMemoryStrategyInput::operator=(JsonView jso
     m_reflectionConfiguration = jsonValue.GetObject("reflectionConfiguration");
     m_reflectionConfigurationHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("memoryRecordSchema")) {
+    m_memoryRecordSchema = jsonValue.GetObject("memoryRecordSchema");
+    m_memoryRecordSchemaHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +67,10 @@ JsonValue EpisodicMemoryStrategyInput::Jsonize() const {
 
   if (m_reflectionConfigurationHasBeenSet) {
     payload.WithObject("reflectionConfiguration", m_reflectionConfiguration.Jsonize());
+  }
+
+  if (m_memoryRecordSchemaHasBeenSet) {
+    payload.WithObject("memoryRecordSchema", m_memoryRecordSchema.Jsonize());
   }
 
   return payload;

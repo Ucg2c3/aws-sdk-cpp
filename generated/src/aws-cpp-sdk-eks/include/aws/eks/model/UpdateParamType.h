@@ -50,6 +50,7 @@ enum class UpdateParamType {
   RemoteNetworkConfig,
   DeletionProtection,
   NodeRepairConfig,
+  VendedLogs,
   UpdatedTier,
   PreviousTier,
   WarmPoolEnabled,

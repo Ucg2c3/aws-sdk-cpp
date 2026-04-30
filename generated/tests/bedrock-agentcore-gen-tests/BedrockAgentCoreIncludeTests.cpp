@@ -243,7 +243,11 @@
 #include <aws/bedrock-agentcore/model/MemoryRecord.h>
 #include <aws/bedrock-agentcore/model/MemoryRecordCreateInput.h>
 #include <aws/bedrock-agentcore/model/MemoryRecordDeleteInput.h>
+#include <aws/bedrock-agentcore/model/MemoryRecordLeftExpression.h>
+#include <aws/bedrock-agentcore/model/MemoryRecordMetadataValue.h>
+#include <aws/bedrock-agentcore/model/MemoryRecordOperatorType.h>
 #include <aws/bedrock-agentcore/model/MemoryRecordOutput.h>
+#include <aws/bedrock-agentcore/model/MemoryRecordRightExpression.h>
 #include <aws/bedrock-agentcore/model/MemoryRecordStatus.h>
 #include <aws/bedrock-agentcore/model/MemoryRecordSummary.h>
 #include <aws/bedrock-agentcore/model/MemoryRecordUpdateInput.h>

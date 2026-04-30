@@ -23,5 +23,9 @@ Aws::String UpdateConnectivityRequest::SerializePayload() const {
     payload.WithString("currentVersion", m_currentVersion);
   }
 
+  if (m_zookeeperAccessHasBeenSet) {
+    payload.WithObject("zookeeperAccess", m_zookeeperAccess.Jsonize());
+  }
+
   return payload.View().WriteReadable();
 }

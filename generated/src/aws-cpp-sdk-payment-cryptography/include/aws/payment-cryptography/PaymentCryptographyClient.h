@@ -113,9 +113,11 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
    * specified Amazon Web Services Regions.</p> <p>The key must be in an active state
    * to add Replication Regions. You can add multiple regions in a single operation,
    * and the key will be available for use in those regions once replication is
-   * complete.</p> <p> <b>Cross-account use:</b> This operation can't be used across
-   * different Amazon Web Services accounts.</p> <p> <b>Related operations:</b> </p>
-   * <ul> <li> <p> <a
+   * complete.</p> <p> <b>Cross-account use:</b> This operation supports
+   * cross-account use when the key has a resource-based policy that grants access.
+   * For more information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html">Resource-based
+   * policies</a>.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_RemoveKeyReplicationRegions.html">RemoveKeyReplicationRegions</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_EnableDefaultKeyReplicationRegions.html">EnableDefaultKeyReplicationRegions</a>
@@ -145,6 +147,42 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
                                      const AddKeyReplicationRegionsResponseReceivedHandler& handler,
                                      const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
     return SubmitAsync(&PaymentCryptographyClient::AddKeyReplicationRegions, request, handler, context);
+  }
+
+  /**
+   * <p>Associates a Multi-Party Approval (MPA) team with a protected operation. For
+   * more information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/mpa.html">Multi-Party
+   * Approval</a> in the <i>Amazon Web Services Payment Cryptography User Guide.</i>
+   * </p> <p> <b>Cross-account use:</b> This operation can't be used across different
+   * Amazon Web Services accounts.</p> <p> <b>Related operations:</b> </p> <ul> <li>
+   * <p> <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DisassociateMpaTeam.html">DisassociateMpaTeam</a>
+   * </p> </li> <li> <p> <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetMpaTeamAssociation.html">GetMpaTeamAssociation</a>
+   * </p> </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/payment-cryptography-2021-09-14/AssociateMpaTeam">AWS
+   * API Reference</a></p>
+   */
+  virtual Model::AssociateMpaTeamOutcome AssociateMpaTeam(const Model::AssociateMpaTeamRequest& request) const;
+
+  /**
+   * A Callable wrapper for AssociateMpaTeam that returns a future to the operation so that it can be executed in parallel to other
+   * requests.
+   */
+  template <typename AssociateMpaTeamRequestT = Model::AssociateMpaTeamRequest>
+  Model::AssociateMpaTeamOutcomeCallable AssociateMpaTeamCallable(const AssociateMpaTeamRequestT& request) const {
+    return SubmitCallable(&PaymentCryptographyClient::AssociateMpaTeam, request);
+  }
+
+  /**
+   * An Async wrapper for AssociateMpaTeam that queues the request into a thread executor and triggers associated callback when operation
+   * has finished.
+   */
+  template <typename AssociateMpaTeamRequestT = Model::AssociateMpaTeamRequest>
+  void AssociateMpaTeamAsync(const AssociateMpaTeamRequestT& request, const AssociateMpaTeamResponseReceivedHandler& handler,
+                             const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
+    return SubmitAsync(&PaymentCryptographyClient::AssociateMpaTeam, request, handler, context);
   }
 
   /**
@@ -329,9 +367,10 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
    * other parties are utilizing this key. If you aren't sure, consider deactivating
    * it instead by calling <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StopKeyUsage.html">StopKeyUsage</a>.</p>
-   * <p> <b>Cross-account use:</b> This operation can't be used across different
-   * Amazon Web Services accounts.</p> <p> <b>Related operations:</b> </p> <ul> <li>
-   * <p> <a
+   * <p> <b>Cross-account use:</b> This operation supports cross-account use when the
+   * key has a resource-based policy that grants access. For more information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html">Resource-based
+   * policies</a>.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_RestoreKey.html">RestoreKey</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StartKeyUsage.html">StartKeyUsage</a>
@@ -359,6 +398,39 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
   void DeleteKeyAsync(const DeleteKeyRequestT& request, const DeleteKeyResponseReceivedHandler& handler,
                       const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
     return SubmitAsync(&PaymentCryptographyClient::DeleteKey, request, handler, context);
+  }
+
+  /**
+   * <p>Removes the resource-based policy attached to an Amazon Web Services Payment
+   * Cryptography key.</p> <p> <b>Cross-account use:</b> This operation can't be used
+   * across different Amazon Web Services accounts.</p> <p> <b>Related
+   * operations:</b> </p> <ul> <li> <p> <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_PutResourcePolicy.html">PutResourcePolicy</a>
+   * </p> </li> <li> <p> <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetResourcePolicy.html">GetResourcePolicy</a>
+   * </p> </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/payment-cryptography-2021-09-14/DeleteResourcePolicy">AWS
+   * API Reference</a></p>
+   */
+  virtual Model::DeleteResourcePolicyOutcome DeleteResourcePolicy(const Model::DeleteResourcePolicyRequest& request) const;
+
+  /**
+   * A Callable wrapper for DeleteResourcePolicy that returns a future to the operation so that it can be executed in parallel to other
+   * requests.
+   */
+  template <typename DeleteResourcePolicyRequestT = Model::DeleteResourcePolicyRequest>
+  Model::DeleteResourcePolicyOutcomeCallable DeleteResourcePolicyCallable(const DeleteResourcePolicyRequestT& request) const {
+    return SubmitCallable(&PaymentCryptographyClient::DeleteResourcePolicy, request);
+  }
+
+  /**
+   * An Async wrapper for DeleteResourcePolicy that queues the request into a thread executor and triggers associated callback when
+   * operation has finished.
+   */
+  template <typename DeleteResourcePolicyRequestT = Model::DeleteResourcePolicyRequest>
+  void DeleteResourcePolicyAsync(const DeleteResourcePolicyRequestT& request, const DeleteResourcePolicyResponseReceivedHandler& handler,
+                                 const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
+    return SubmitAsync(&PaymentCryptographyClient::DeleteResourcePolicy, request, handler, context);
   }
 
   /**
@@ -404,6 +476,39 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
                                                 const DisableDefaultKeyReplicationRegionsResponseReceivedHandler& handler,
                                                 const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
     return SubmitAsync(&PaymentCryptographyClient::DisableDefaultKeyReplicationRegions, request, handler, context);
+  }
+
+  /**
+   * <p>Removes the association between a Multi-Party Approval (MPA) team and a
+   * protected operation.</p> <p> <b>Cross-account use:</b> This operation can't be
+   * used across different Amazon Web Services accounts.</p> <p> <b>Related
+   * operations:</b> </p> <ul> <li> <p> <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_AssociateMpaTeam.html">AssociateMpaTeam</a>
+   * </p> </li> <li> <p> <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetMpaTeamAssociation.html">GetMpaTeamAssociation</a>
+   * </p> </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/payment-cryptography-2021-09-14/DisassociateMpaTeam">AWS
+   * API Reference</a></p>
+   */
+  virtual Model::DisassociateMpaTeamOutcome DisassociateMpaTeam(const Model::DisassociateMpaTeamRequest& request) const;
+
+  /**
+   * A Callable wrapper for DisassociateMpaTeam that returns a future to the operation so that it can be executed in parallel to other
+   * requests.
+   */
+  template <typename DisassociateMpaTeamRequestT = Model::DisassociateMpaTeamRequest>
+  Model::DisassociateMpaTeamOutcomeCallable DisassociateMpaTeamCallable(const DisassociateMpaTeamRequestT& request) const {
+    return SubmitCallable(&PaymentCryptographyClient::DisassociateMpaTeam, request);
+  }
+
+  /**
+   * An Async wrapper for DisassociateMpaTeam that queues the request into a thread executor and triggers associated callback when operation
+   * has finished.
+   */
+  template <typename DisassociateMpaTeamRequestT = Model::DisassociateMpaTeamRequest>
+  void DisassociateMpaTeamAsync(const DisassociateMpaTeamRequestT& request, const DisassociateMpaTeamResponseReceivedHandler& handler,
+                                const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
+    return SubmitAsync(&PaymentCryptographyClient::DisassociateMpaTeam, request, handler, context);
   }
 
   /**
@@ -596,8 +701,10 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
    * receiving ECC key pair.</p> </li> </ul> <p>When this operation is successful,
    * Amazon Web Services Payment Cryptography returns the working key as a TR-31
    * WrappedKeyBlock, where the wrapping key is the ECDH derived key.</p> <p>
-   * <b>Cross-account use:</b> This operation can't be used across different Amazon
-   * Web Services accounts.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
+   * <b>Cross-account use:</b> This operation supports cross-account use when the key
+   * has a resource-based policy that grants access. For more information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html">Resource-based
+   * policies</a>.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetParametersForExport.html">GetParametersForExport</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html">ImportKey</a>
@@ -736,8 +843,10 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
    * including the immutable and mutable attributes specified when the key was
    * created. Returns key metadata including attributes, state, and timestamps, but
    * does not return the actual cryptographic key material.</p> <p> <b>Cross-account
-   * use:</b> This operation can't be used across different Amazon Web Services
-   * accounts.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
+   * use:</b> This operation supports cross-account use when the key has a
+   * resource-based policy that grants access. For more information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html">Resource-based
+   * policies</a>.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html">CreateKey</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteKey.html">DeleteKey</a>
@@ -765,6 +874,39 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
   void GetKeyAsync(const GetKeyRequestT& request, const GetKeyResponseReceivedHandler& handler,
                    const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
     return SubmitAsync(&PaymentCryptographyClient::GetKey, request, handler, context);
+  }
+
+  /**
+   * <p>Returns the Multi-Party Approval (MPA) team association for a protected
+   * operation.</p> <p> <b>Cross-account use:</b> This operation can't be used across
+   * different Amazon Web Services accounts.</p> <p> <b>Related operations:</b> </p>
+   * <ul> <li> <p> <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_AssociateMpaTeam.html">AssociateMpaTeam</a>
+   * </p> </li> <li> <p> <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DisassociateMpaTeam.html">DisassociateMpaTeam</a>
+   * </p> </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/payment-cryptography-2021-09-14/GetMpaTeamAssociation">AWS
+   * API Reference</a></p>
+   */
+  virtual Model::GetMpaTeamAssociationOutcome GetMpaTeamAssociation(const Model::GetMpaTeamAssociationRequest& request) const;
+
+  /**
+   * A Callable wrapper for GetMpaTeamAssociation that returns a future to the operation so that it can be executed in parallel to other
+   * requests.
+   */
+  template <typename GetMpaTeamAssociationRequestT = Model::GetMpaTeamAssociationRequest>
+  Model::GetMpaTeamAssociationOutcomeCallable GetMpaTeamAssociationCallable(const GetMpaTeamAssociationRequestT& request) const {
+    return SubmitCallable(&PaymentCryptographyClient::GetMpaTeamAssociation, request);
+  }
+
+  /**
+   * An Async wrapper for GetMpaTeamAssociation that queues the request into a thread executor and triggers associated callback when
+   * operation has finished.
+   */
+  template <typename GetMpaTeamAssociationRequestT = Model::GetMpaTeamAssociationRequest>
+  void GetMpaTeamAssociationAsync(const GetMpaTeamAssociationRequestT& request, const GetMpaTeamAssociationResponseReceivedHandler& handler,
+                                  const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
+    return SubmitAsync(&PaymentCryptographyClient::GetMpaTeamAssociation, request, handler, context);
   }
 
   /**
@@ -859,8 +1001,10 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
    * download the public key certificate of the asymmetric key. You can share the
    * public key certificate to allow others to encrypt messages and verify signatures
    * outside of Amazon Web Services Payment Cryptography</p> <p> <b>Cross-account
-   * use:</b> This operation can't be used across different Amazon Web Services
-   * accounts.</p><p><h3>See Also:</h3>   <a
+   * use:</b> This operation supports cross-account use when the key has a
+   * resource-based policy that grants access. For more information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html">Resource-based
+   * policies</a>.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/payment-cryptography-2021-09-14/GetPublicKeyCertificate">AWS
    * API Reference</a></p>
    */
@@ -884,6 +1028,39 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
                                     const GetPublicKeyCertificateResponseReceivedHandler& handler,
                                     const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
     return SubmitAsync(&PaymentCryptographyClient::GetPublicKeyCertificate, request, handler, context);
+  }
+
+  /**
+   * <p>Returns the resource-based policy attached to an Amazon Web Services Payment
+   * Cryptography key.</p> <p> <b>Cross-account use:</b> This operation can't be used
+   * across different Amazon Web Services accounts.</p> <p> <b>Related
+   * operations:</b> </p> <ul> <li> <p> <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_PutResourcePolicy.html">PutResourcePolicy</a>
+   * </p> </li> <li> <p> <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteResourcePolicy.html">DeleteResourcePolicy</a>
+   * </p> </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/payment-cryptography-2021-09-14/GetResourcePolicy">AWS
+   * API Reference</a></p>
+   */
+  virtual Model::GetResourcePolicyOutcome GetResourcePolicy(const Model::GetResourcePolicyRequest& request) const;
+
+  /**
+   * A Callable wrapper for GetResourcePolicy that returns a future to the operation so that it can be executed in parallel to other
+   * requests.
+   */
+  template <typename GetResourcePolicyRequestT = Model::GetResourcePolicyRequest>
+  Model::GetResourcePolicyOutcomeCallable GetResourcePolicyCallable(const GetResourcePolicyRequestT& request) const {
+    return SubmitCallable(&PaymentCryptographyClient::GetResourcePolicy, request);
+  }
+
+  /**
+   * An Async wrapper for GetResourcePolicy that queues the request into a thread executor and triggers associated callback when operation
+   * has finished.
+   */
+  template <typename GetResourcePolicyRequestT = Model::GetResourcePolicyRequest>
+  void GetResourcePolicyAsync(const GetResourcePolicyRequestT& request, const GetResourcePolicyResponseReceivedHandler& handler,
+                              const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
+    return SubmitAsync(&PaymentCryptographyClient::GetResourcePolicy, request, handler, context);
   }
 
   /**
@@ -1025,9 +1202,11 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
    * derive a shared KEK.</p> </li> <li> <p>
    * <code>CertificateAuthorityPublicKeyIdentifier</code>: The <code>keyARN</code> of
    * the CA that signed the public key certificate of the receiving ECC key pair.</p>
-   * </li> </ul> <p> <b>Cross-account use:</b> This operation can't be used across
-   * different Amazon Web Services accounts.</p> <p> <b>Related operations:</b> </p>
-   * <ul> <li> <p> <a
+   * </li> </ul> <p> <b>Cross-account use:</b> This operation supports cross-account
+   * use when the key has a resource-based policy that grants access. For more
+   * information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html">Resource-based
+   * policies</a>.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ExportKey.html">ExportKey</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetParametersForImport.html">GetParametersForImport</a>
@@ -1149,9 +1328,11 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
    * <code>NextToken</code> value. Use this value in a subsequent
    * <code>ListTagsForResource</code> request to get more tags. When you receive a
    * response with no NextToken (or an empty or null value), that means there are no
-   * more tags to get.</p> <p> <b>Cross-account use:</b> This operation can't be used
-   * across different Amazon Web Services accounts.</p> <p> <b>Related
-   * operations:</b> </p> <ul> <li> <p> <a
+   * more tags to get.</p> <p> <b>Cross-account use:</b> This operation supports
+   * cross-account use when the key has a resource-based policy that grants access.
+   * For more information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html">Resource-based
+   * policies</a>.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_TagResource.html">TagResource</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_UntagResource.html">UntagResource</a>
@@ -1181,6 +1362,44 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
   }
 
   /**
+   * <p>Attaches or replaces a resource-based policy on an Amazon Web Services
+   * Payment Cryptography key. A resource-based policy can grant cross-account access
+   * to your key.</p> <p>If the policy would grant public access, the request fails
+   * with a <code>PublicPolicyException</code>.</p> <p>To remove a resource-based
+   * policy from a key, use <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteResourcePolicy.html">DeleteResourcePolicy</a>.</p>
+   * <p> <b>Cross-account use:</b> This operation can't be used across different
+   * Amazon Web Services accounts.</p> <p> <b>Related operations:</b> </p> <ul> <li>
+   * <p> <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetResourcePolicy.html">GetResourcePolicy</a>
+   * </p> </li> <li> <p> <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteResourcePolicy.html">DeleteResourcePolicy</a>
+   * </p> </li> </ul><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/payment-cryptography-2021-09-14/PutResourcePolicy">AWS
+   * API Reference</a></p>
+   */
+  virtual Model::PutResourcePolicyOutcome PutResourcePolicy(const Model::PutResourcePolicyRequest& request) const;
+
+  /**
+   * A Callable wrapper for PutResourcePolicy that returns a future to the operation so that it can be executed in parallel to other
+   * requests.
+   */
+  template <typename PutResourcePolicyRequestT = Model::PutResourcePolicyRequest>
+  Model::PutResourcePolicyOutcomeCallable PutResourcePolicyCallable(const PutResourcePolicyRequestT& request) const {
+    return SubmitCallable(&PaymentCryptographyClient::PutResourcePolicy, request);
+  }
+
+  /**
+   * An Async wrapper for PutResourcePolicy that queues the request into a thread executor and triggers associated callback when operation
+   * has finished.
+   */
+  template <typename PutResourcePolicyRequestT = Model::PutResourcePolicyRequest>
+  void PutResourcePolicyAsync(const PutResourcePolicyRequestT& request, const PutResourcePolicyResponseReceivedHandler& handler,
+                              const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
+    return SubmitAsync(&PaymentCryptographyClient::PutResourcePolicy, request, handler, context);
+  }
+
+  /**
    * <p>Removes Replication Regions from an existing Amazon Web Services Payment
    * Cryptography key, disabling the key's availability for cryptographic operations
    * in the specified Amazon Web Services Regions.</p> <p>When you remove Replication
@@ -1192,8 +1411,10 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
    * key replication</a>.</p>  <p>Ensure that no active cryptographic
    * operations or applications depend on the key in the regions you're removing
    * before performing this operation.</p>  <p> <b>Cross-account use:</b>
-   * This operation can't be used across different Amazon Web Services accounts.</p>
-   * <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
+   * This operation supports cross-account use when the key has a resource-based
+   * policy that grants access. For more information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html">Resource-based
+   * policies</a>.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_AddKeyReplicationRegions.html">AddKeyReplicationRegions</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DisableDefaultKeyReplicationRegions.html">DisableDefaultKeyReplicationRegions</a>
@@ -1234,8 +1455,10 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
    * <code>Key</code> is restored, the <code>KeyState</code> is
    * <code>CREATE_COMPLETE</code>, and the value for
    * <code>deletePendingTimestamp</code> is removed.</p> <p> <b>Cross-account
-   * use:</b> This operation can't be used across different Amazon Web Services
-   * accounts.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
+   * use:</b> This operation supports cross-account use when the key has a
+   * resource-based policy that grants access. For more information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html">Resource-based
+   * policies</a>.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteKey.html">DeleteKey</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StartKeyUsage.html">StartKeyUsage</a>
@@ -1268,9 +1491,11 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
   /**
    * <p>Enables an Amazon Web Services Payment Cryptography key, which makes it
    * active for cryptographic operations within Amazon Web Services Payment
-   * Cryptography</p> <p> <b>Cross-account use:</b> This operation can't be used
-   * across different Amazon Web Services accounts.</p> <p> <b>Related
-   * operations:</b> </p> <ul> <li> <p> <a
+   * Cryptography</p> <p> <b>Cross-account use:</b> This operation supports
+   * cross-account use when the key has a resource-based policy that grants access.
+   * For more information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html">Resource-based
+   * policies</a>.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StopKeyUsage.html">StopKeyUsage</a>
    * </p> </li> </ul><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/payment-cryptography-2021-09-14/StartKeyUsage">AWS
@@ -1303,9 +1528,10 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteKey.html">DeleteKey</a>
    * to deactivate a key. You can enable the key in the future by calling <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StartKeyUsage.html">StartKeyUsage</a>.</p>
-   * <p> <b>Cross-account use:</b> This operation can't be used across different
-   * Amazon Web Services accounts.</p> <p> <b>Related operations:</b> </p> <ul> <li>
-   * <p> <a
+   * <p> <b>Cross-account use:</b> This operation supports cross-account use when the
+   * key has a resource-based policy that grants access. For more information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html">Resource-based
+   * policies</a>.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_DeleteKey.html">DeleteKey</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_StartKeyUsage.html">StartKeyUsage</a>
@@ -1343,9 +1569,10 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
    * also add tags to an Amazon Web Services Payment Cryptography key when you create
    * it with <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_CreateKey.html">CreateKey</a>.</p>
-   * <p> <b>Cross-account use:</b> This operation can't be used across different
-   * Amazon Web Services accounts.</p> <p> <b>Related operations:</b> </p> <ul> <li>
-   * <p> <a
+   * <p> <b>Cross-account use:</b> This operation supports cross-account use when the
+   * key has a resource-based policy that grants access. For more information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html">Resource-based
+   * policies</a>.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ListTagsForResource.html">ListTagsForResource</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_UntagResource.html">UntagResource</a>
@@ -1377,8 +1604,10 @@ class AWS_PAYMENTCRYPTOGRAPHY_API PaymentCryptographyClient : public Aws::Client
    * <p>Deletes a tag from an Amazon Web Services Payment Cryptography key.</p>
    *  <p>Tagging or untagging an Amazon Web Services Payment Cryptography key
    * can allow or deny permission to the key.</p>  <p> <b>Cross-account
-   * use:</b> This operation can't be used across different Amazon Web Services
-   * accounts.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
+   * use:</b> This operation supports cross-account use when the key has a
+   * resource-based policy that grants access. For more information, see <a
+   * href="https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security_iam_resource-based-policies.html">Resource-based
+   * policies</a>.</p> <p> <b>Related operations:</b> </p> <ul> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ListTagsForResource.html">ListTagsForResource</a>
    * </p> </li> <li> <p> <a
    * href="https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_TagResource.html">TagResource</a>

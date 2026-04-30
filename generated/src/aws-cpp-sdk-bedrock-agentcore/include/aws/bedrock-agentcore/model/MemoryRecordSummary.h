@@ -6,7 +6,7 @@
 #pragma once
 #include <aws/bedrock-agentcore/BedrockAgentCore_EXPORTS.h>
 #include <aws/bedrock-agentcore/model/MemoryContent.h>
-#include <aws/bedrock-agentcore/model/MetadataValue.h>
+#include <aws/bedrock-agentcore/model/MemoryRecordMetadataValue.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
@@ -154,19 +154,19 @@ class MemoryRecordSummary {
   /**
    * <p>A map of metadata key-value pairs associated with a memory record.</p>
    */
-  inline const Aws::Map<Aws::String, MetadataValue>& GetMetadata() const { return m_metadata; }
+  inline const Aws::Map<Aws::String, MemoryRecordMetadataValue>& GetMetadata() const { return m_metadata; }
   inline bool MetadataHasBeenSet() const { return m_metadataHasBeenSet; }
-  template <typename MetadataT = Aws::Map<Aws::String, MetadataValue>>
+  template <typename MetadataT = Aws::Map<Aws::String, MemoryRecordMetadataValue>>
   void SetMetadata(MetadataT&& value) {
     m_metadataHasBeenSet = true;
     m_metadata = std::forward<MetadataT>(value);
   }
-  template <typename MetadataT = Aws::Map<Aws::String, MetadataValue>>
+  template <typename MetadataT = Aws::Map<Aws::String, MemoryRecordMetadataValue>>
   MemoryRecordSummary& WithMetadata(MetadataT&& value) {
     SetMetadata(std::forward<MetadataT>(value));
     return *this;
   }
-  template <typename MetadataKeyT = Aws::String, typename MetadataValueT = MetadataValue>
+  template <typename MetadataKeyT = Aws::String, typename MetadataValueT = MemoryRecordMetadataValue>
   MemoryRecordSummary& AddMetadata(MetadataKeyT&& key, MetadataValueT&& value) {
     m_metadataHasBeenSet = true;
     m_metadata.emplace(std::forward<MetadataKeyT>(key), std::forward<MetadataValueT>(value));
@@ -186,7 +186,7 @@ class MemoryRecordSummary {
 
   double m_score{0.0};
 
-  Aws::Map<Aws::String, MetadataValue> m_metadata;
+  Aws::Map<Aws::String, MemoryRecordMetadataValue> m_metadata;
   bool m_memoryRecordIdHasBeenSet = false;
   bool m_contentHasBeenSet = false;
   bool m_memoryStrategyIdHasBeenSet = false;

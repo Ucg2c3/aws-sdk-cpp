@@ -6,7 +6,9 @@
 #pragma once
 #include <aws/bedrock-agentcore/BedrockAgentCore_EXPORTS.h>
 #include <aws/bedrock-agentcore/model/MemoryContent.h>
+#include <aws/bedrock-agentcore/model/MemoryRecordMetadataValue.h>
 #include <aws/core/utils/DateTime.h>
+#include <aws/core/utils/memory/stl/AWSMap.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 
@@ -132,6 +134,30 @@ class MemoryRecordCreateInput {
     return *this;
   }
   ///@}
+
+  ///@{
+  /**
+   * <p>Metadata key-value pairs to be stored with the memory record.</p>
+   */
+  inline const Aws::Map<Aws::String, MemoryRecordMetadataValue>& GetMetadata() const { return m_metadata; }
+  inline bool MetadataHasBeenSet() const { return m_metadataHasBeenSet; }
+  template <typename MetadataT = Aws::Map<Aws::String, MemoryRecordMetadataValue>>
+  void SetMetadata(MetadataT&& value) {
+    m_metadataHasBeenSet = true;
+    m_metadata = std::forward<MetadataT>(value);
+  }
+  template <typename MetadataT = Aws::Map<Aws::String, MemoryRecordMetadataValue>>
+  MemoryRecordCreateInput& WithMetadata(MetadataT&& value) {
+    SetMetadata(std::forward<MetadataT>(value));
+    return *this;
+  }
+  template <typename MetadataKeyT = Aws::String, typename MetadataValueT = MemoryRecordMetadataValue>
+  MemoryRecordCreateInput& AddMetadata(MetadataKeyT&& key, MetadataValueT&& value) {
+    m_metadataHasBeenSet = true;
+    m_metadata.emplace(std::forward<MetadataKeyT>(key), std::forward<MetadataValueT>(value));
+    return *this;
+  }
+  ///@}
  private:
   Aws::String m_requestIdentifier;
 
@@ -142,11 +168,14 @@ class MemoryRecordCreateInput {
   Aws::Utils::DateTime m_timestamp{};
 
   Aws::String m_memoryStrategyId;
+
+  Aws::Map<Aws::String, MemoryRecordMetadataValue> m_metadata;
   bool m_requestIdentifierHasBeenSet = false;
   bool m_namespacesHasBeenSet = false;
   bool m_contentHasBeenSet = false;
   bool m_timestampHasBeenSet = false;
   bool m_memoryStrategyIdHasBeenSet = false;
+  bool m_metadataHasBeenSet = false;
 };
 
 }  // namespace Model

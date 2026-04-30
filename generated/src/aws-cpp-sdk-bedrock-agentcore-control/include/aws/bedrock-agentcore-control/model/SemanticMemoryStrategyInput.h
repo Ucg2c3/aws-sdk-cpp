@@ -5,6 +5,7 @@
 
 #pragma once
 #include <aws/bedrock-agentcore-control/BedrockAgentCoreControl_EXPORTS.h>
+#include <aws/bedrock-agentcore-control/model/MemoryRecordSchema.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
 #include <aws/core/utils/memory/stl/AWSVector.h>
 
@@ -91,15 +92,34 @@ class SemanticMemoryStrategyInput {
     return *this;
   }
   ///@}
+
+  ///@{
+
+  inline const MemoryRecordSchema& GetMemoryRecordSchema() const { return m_memoryRecordSchema; }
+  inline bool MemoryRecordSchemaHasBeenSet() const { return m_memoryRecordSchemaHasBeenSet; }
+  template <typename MemoryRecordSchemaT = MemoryRecordSchema>
+  void SetMemoryRecordSchema(MemoryRecordSchemaT&& value) {
+    m_memoryRecordSchemaHasBeenSet = true;
+    m_memoryRecordSchema = std::forward<MemoryRecordSchemaT>(value);
+  }
+  template <typename MemoryRecordSchemaT = MemoryRecordSchema>
+  SemanticMemoryStrategyInput& WithMemoryRecordSchema(MemoryRecordSchemaT&& value) {
+    SetMemoryRecordSchema(std::forward<MemoryRecordSchemaT>(value));
+    return *this;
+  }
+  ///@}
  private:
   Aws::String m_name;
 
   Aws::String m_description;
 
   Aws::Vector<Aws::String> m_namespaceTemplates;
+
+  MemoryRecordSchema m_memoryRecordSchema;
   bool m_nameHasBeenSet = false;
   bool m_descriptionHasBeenSet = false;
   bool m_namespaceTemplatesHasBeenSet = false;
+  bool m_memoryRecordSchemaHasBeenSet = false;
 };
 
 }  // namespace Model

@@ -11,6 +11,7 @@
 #include <aws/sagemaker/model/InferenceComponentDataCacheConfig.h>
 #include <aws/sagemaker/model/InferenceComponentSchedulingConfig.h>
 #include <aws/sagemaker/model/InferenceComponentStartupParameters.h>
+#include <aws/sagemaker/model/ProductionVariantInstanceType.h>
 
 #include <utility>
 
@@ -37,6 +38,24 @@ class InferenceComponentSpecification {
   AWS_SAGEMAKER_API InferenceComponentSpecification(Aws::Utils::Json::JsonView jsonValue);
   AWS_SAGEMAKER_API InferenceComponentSpecification& operator=(Aws::Utils::Json::JsonView jsonValue);
   AWS_SAGEMAKER_API Aws::Utils::Json::JsonValue Jsonize() const;
+
+  ///@{
+  /**
+   * <p>The ML compute instance type for the inference component specification.
+   * Specifies which instance type this specification applies to. Required when using
+   * the <code>Specifications</code> parameter with multiple entries.</p>
+   */
+  inline ProductionVariantInstanceType GetInstanceType() const { return m_instanceType; }
+  inline bool InstanceTypeHasBeenSet() const { return m_instanceTypeHasBeenSet; }
+  inline void SetInstanceType(ProductionVariantInstanceType value) {
+    m_instanceTypeHasBeenSet = true;
+    m_instanceType = value;
+  }
+  inline InferenceComponentSpecification& WithInstanceType(ProductionVariantInstanceType value) {
+    SetInstanceType(value);
+    return *this;
+  }
+  ///@}
 
   ///@{
   /**
@@ -186,6 +205,8 @@ class InferenceComponentSpecification {
   }
   ///@}
  private:
+  ProductionVariantInstanceType m_instanceType{ProductionVariantInstanceType::NOT_SET};
+
   Aws::String m_modelName;
 
   InferenceComponentContainerSpecification m_container;
@@ -199,6 +220,7 @@ class InferenceComponentSpecification {
   InferenceComponentDataCacheConfig m_dataCacheConfig;
 
   InferenceComponentSchedulingConfig m_schedulingConfig;
+  bool m_instanceTypeHasBeenSet = false;
   bool m_modelNameHasBeenSet = false;
   bool m_containerHasBeenSet = false;
   bool m_startupParametersHasBeenSet = false;

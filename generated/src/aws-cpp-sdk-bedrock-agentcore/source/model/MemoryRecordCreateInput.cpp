@@ -41,6 +41,13 @@ MemoryRecordCreateInput& MemoryRecordCreateInput::operator=(JsonView jsonValue) 
     m_memoryStrategyId = jsonValue.GetString("memoryStrategyId");
     m_memoryStrategyIdHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("metadata")) {
+    Aws::Map<Aws::String, JsonView> metadataJsonMap = jsonValue.GetObject("metadata").GetAllObjects();
+    for (auto& metadataItem : metadataJsonMap) {
+      m_metadata[metadataItem.first] = metadataItem.second.AsObject();
+    }
+    m_metadataHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -69,6 +76,14 @@ JsonValue MemoryRecordCreateInput::Jsonize() const {
 
   if (m_memoryStrategyIdHasBeenSet) {
     payload.WithString("memoryStrategyId", m_memoryStrategyId);
+  }
+
+  if (m_metadataHasBeenSet) {
+    JsonValue metadataJsonMap;
+    for (auto& metadataItem : m_metadata) {
+      metadataJsonMap.WithObject(metadataItem.first, metadataItem.second.Jsonize());
+    }
+    payload.WithObject("metadata", std::move(metadataJsonMap));
   }
 
   return payload;

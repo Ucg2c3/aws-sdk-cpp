@@ -26,6 +26,7 @@ namespace PaymentCryptographyErrorMapper {
 static const int CONFLICT_HASH = HashingUtils::HashString("ConflictException");
 static const int SERVICE_QUOTA_EXCEEDED_HASH = HashingUtils::HashString("ServiceQuotaExceededException");
 static const int INTERNAL_SERVER_HASH = HashingUtils::HashString("InternalServerException");
+static const int PUBLIC_POLICY_HASH = HashingUtils::HashString("PublicPolicyException");
 
 AWSError<CoreErrors> GetErrorForName(const char* errorName) {
   int hashCode = HashingUtils::HashString(errorName);
@@ -36,6 +37,8 @@ AWSError<CoreErrors> GetErrorForName(const char* errorName) {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(PaymentCryptographyErrors::SERVICE_QUOTA_EXCEEDED), RetryableType::NOT_RETRYABLE);
   } else if (hashCode == INTERNAL_SERVER_HASH) {
     return AWSError<CoreErrors>(static_cast<CoreErrors>(PaymentCryptographyErrors::INTERNAL_SERVER), RetryableType::NOT_RETRYABLE);
+  } else if (hashCode == PUBLIC_POLICY_HASH) {
+    return AWSError<CoreErrors>(static_cast<CoreErrors>(PaymentCryptographyErrors::PUBLIC_POLICY), RetryableType::NOT_RETRYABLE);
   }
   return AWSError<CoreErrors>(CoreErrors::UNKNOWN, false);
 }

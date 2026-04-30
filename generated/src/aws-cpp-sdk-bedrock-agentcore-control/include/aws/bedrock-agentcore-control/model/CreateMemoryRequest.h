@@ -6,6 +6,7 @@
 #pragma once
 #include <aws/bedrock-agentcore-control/BedrockAgentCoreControlRequest.h>
 #include <aws/bedrock-agentcore-control/BedrockAgentCoreControl_EXPORTS.h>
+#include <aws/bedrock-agentcore-control/model/IndexedKey.h>
 #include <aws/bedrock-agentcore-control/model/MemoryStrategyInput.h>
 #include <aws/bedrock-agentcore-control/model/StreamDeliveryResources.h>
 #include <aws/core/utils/UUID.h>
@@ -171,6 +172,31 @@ class CreateMemoryRequest : public BedrockAgentCoreControlRequest {
 
   ///@{
   /**
+   * <p>Metadata keys to index for filtering. Once declared, indexed keys cannot be
+   * removed.</p>
+   */
+  inline const Aws::Vector<IndexedKey>& GetIndexedKeys() const { return m_indexedKeys; }
+  inline bool IndexedKeysHasBeenSet() const { return m_indexedKeysHasBeenSet; }
+  template <typename IndexedKeysT = Aws::Vector<IndexedKey>>
+  void SetIndexedKeys(IndexedKeysT&& value) {
+    m_indexedKeysHasBeenSet = true;
+    m_indexedKeys = std::forward<IndexedKeysT>(value);
+  }
+  template <typename IndexedKeysT = Aws::Vector<IndexedKey>>
+  CreateMemoryRequest& WithIndexedKeys(IndexedKeysT&& value) {
+    SetIndexedKeys(std::forward<IndexedKeysT>(value));
+    return *this;
+  }
+  template <typename IndexedKeysT = IndexedKey>
+  CreateMemoryRequest& AddIndexedKeys(IndexedKeysT&& value) {
+    m_indexedKeysHasBeenSet = true;
+    m_indexedKeys.emplace_back(std::forward<IndexedKeysT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
    * <p>Configuration for streaming memory record data to external resources.</p>
    */
   inline const StreamDeliveryResources& GetStreamDeliveryResources() const { return m_streamDeliveryResources; }
@@ -227,6 +253,8 @@ class CreateMemoryRequest : public BedrockAgentCoreControlRequest {
 
   Aws::Vector<MemoryStrategyInput> m_memoryStrategies;
 
+  Aws::Vector<IndexedKey> m_indexedKeys;
+
   StreamDeliveryResources m_streamDeliveryResources;
 
   Aws::Map<Aws::String, Aws::String> m_tags;
@@ -237,6 +265,7 @@ class CreateMemoryRequest : public BedrockAgentCoreControlRequest {
   bool m_memoryExecutionRoleArnHasBeenSet = false;
   bool m_eventExpiryDurationHasBeenSet = false;
   bool m_memoryStrategiesHasBeenSet = false;
+  bool m_indexedKeysHasBeenSet = false;
   bool m_streamDeliveryResourcesHasBeenSet = false;
   bool m_tagsHasBeenSet = false;
 };

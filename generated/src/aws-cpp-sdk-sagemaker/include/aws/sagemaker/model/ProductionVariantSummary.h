@@ -8,6 +8,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/sagemaker/SageMaker_EXPORTS.h>
 #include <aws/sagemaker/model/DeployedImage.h>
+#include <aws/sagemaker/model/InstancePoolSummary.h>
 #include <aws/sagemaker/model/ProductionVariantCapacityReservationSummary.h>
 #include <aws/sagemaker/model/ProductionVariantManagedInstanceScaling.h>
 #include <aws/sagemaker/model/ProductionVariantRoutingConfig.h>
@@ -154,6 +155,31 @@ class ProductionVariantSummary {
 
   ///@{
   /**
+   * <p>A list of instance pools for the production variant. Each pool indicates the
+   * instance type and the current number of instances of that type.</p>
+   */
+  inline const Aws::Vector<InstancePoolSummary>& GetInstancePools() const { return m_instancePools; }
+  inline bool InstancePoolsHasBeenSet() const { return m_instancePoolsHasBeenSet; }
+  template <typename InstancePoolsT = Aws::Vector<InstancePoolSummary>>
+  void SetInstancePools(InstancePoolsT&& value) {
+    m_instancePoolsHasBeenSet = true;
+    m_instancePools = std::forward<InstancePoolsT>(value);
+  }
+  template <typename InstancePoolsT = Aws::Vector<InstancePoolSummary>>
+  ProductionVariantSummary& WithInstancePools(InstancePoolsT&& value) {
+    SetInstancePools(std::forward<InstancePoolsT>(value));
+    return *this;
+  }
+  template <typename InstancePoolsT = InstancePoolSummary>
+  ProductionVariantSummary& AddInstancePools(InstancePoolsT&& value) {
+    m_instancePoolsHasBeenSet = true;
+    m_instancePools.emplace_back(std::forward<InstancePoolsT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
    * <p>The endpoint variant status which describes the current deployment stage
    * status or operational status.</p>
    */
@@ -282,6 +308,8 @@ class ProductionVariantSummary {
 
   int m_desiredInstanceCount{0};
 
+  Aws::Vector<InstancePoolSummary> m_instancePools;
+
   Aws::Vector<ProductionVariantStatus> m_variantStatus;
 
   ProductionVariantServerlessConfig m_currentServerlessConfig;
@@ -299,6 +327,7 @@ class ProductionVariantSummary {
   bool m_desiredWeightHasBeenSet = false;
   bool m_currentInstanceCountHasBeenSet = false;
   bool m_desiredInstanceCountHasBeenSet = false;
+  bool m_instancePoolsHasBeenSet = false;
   bool m_variantStatusHasBeenSet = false;
   bool m_currentServerlessConfigHasBeenSet = false;
   bool m_desiredServerlessConfigHasBeenSet = false;

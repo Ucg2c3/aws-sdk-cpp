@@ -23,6 +23,14 @@ Aws::String UpdateInferenceComponentRequest::SerializePayload() const {
     payload.WithObject("Specification", m_specification.Jsonize());
   }
 
+  if (m_specificationsHasBeenSet) {
+    Aws::Utils::Array<JsonValue> specificationsJsonList(m_specifications.size());
+    for (unsigned specificationsIndex = 0; specificationsIndex < specificationsJsonList.GetLength(); ++specificationsIndex) {
+      specificationsJsonList[specificationsIndex].AsObject(m_specifications[specificationsIndex].Jsonize());
+    }
+    payload.WithArray("Specifications", std::move(specificationsJsonList));
+  }
+
   if (m_runtimeConfigHasBeenSet) {
     payload.WithObject("RuntimeConfig", m_runtimeConfig.Jsonize());
   }

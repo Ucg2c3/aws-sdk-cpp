@@ -26,6 +26,14 @@ CreateApplicationResult& CreateApplicationResult::operator=(const Aws::AmazonWeb
     m_applicationArn = jsonValue.GetString("ApplicationArn");
     m_applicationArnHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("InstanceArn")) {
+    m_instanceArn = jsonValue.GetString("InstanceArn");
+    m_instanceArnHasBeenSet = true;
+  }
+  if (jsonValue.ValueExists("IdentityStoreArn")) {
+    m_identityStoreArn = jsonValue.GetString("IdentityStoreArn");
+    m_identityStoreArnHasBeenSet = true;
+  }
 
   const auto& headers = result.GetHeaderValueCollection();
   const auto& requestIdIter = headers.find("x-amzn-requestid");

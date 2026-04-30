@@ -7,6 +7,7 @@
 #include <aws/core/http/HttpResponse.h>
 #include <aws/core/utils/DateTime.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/sagemaker/SageMaker_EXPORTS.h>
 #include <aws/sagemaker/model/InferenceComponentDeploymentConfig.h>
 #include <aws/sagemaker/model/InferenceComponentRuntimeConfigSummary.h>
@@ -156,6 +157,32 @@ class DescribeInferenceComponentResult {
 
   ///@{
   /**
+   * <p>A list of specification summaries for the inference component, one per
+   * instance type. This parameter is populated when the inference component was
+   * created with multiple specifications. When this parameter is populated, the
+   * singular <code>Specification</code> parameter is not returned.</p>
+   */
+  inline const Aws::Vector<InferenceComponentSpecificationSummary>& GetSpecifications() const { return m_specifications; }
+  template <typename SpecificationsT = Aws::Vector<InferenceComponentSpecificationSummary>>
+  void SetSpecifications(SpecificationsT&& value) {
+    m_specificationsHasBeenSet = true;
+    m_specifications = std::forward<SpecificationsT>(value);
+  }
+  template <typename SpecificationsT = Aws::Vector<InferenceComponentSpecificationSummary>>
+  DescribeInferenceComponentResult& WithSpecifications(SpecificationsT&& value) {
+    SetSpecifications(std::forward<SpecificationsT>(value));
+    return *this;
+  }
+  template <typename SpecificationsT = InferenceComponentSpecificationSummary>
+  DescribeInferenceComponentResult& AddSpecifications(SpecificationsT&& value) {
+    m_specificationsHasBeenSet = true;
+    m_specifications.emplace_back(std::forward<SpecificationsT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
    * <p>Details about the runtime settings for the model that is deployed with the
    * inference component.</p>
    */
@@ -270,6 +297,8 @@ class DescribeInferenceComponentResult {
 
   InferenceComponentSpecificationSummary m_specification;
 
+  Aws::Vector<InferenceComponentSpecificationSummary> m_specifications;
+
   InferenceComponentRuntimeConfigSummary m_runtimeConfig;
 
   Aws::Utils::DateTime m_creationTime{};
@@ -289,6 +318,7 @@ class DescribeInferenceComponentResult {
   bool m_variantNameHasBeenSet = false;
   bool m_failureReasonHasBeenSet = false;
   bool m_specificationHasBeenSet = false;
+  bool m_specificationsHasBeenSet = false;
   bool m_runtimeConfigHasBeenSet = false;
   bool m_creationTimeHasBeenSet = false;
   bool m_lastModifiedTimeHasBeenSet = false;

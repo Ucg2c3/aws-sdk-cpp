@@ -5,9 +5,9 @@
 
 #pragma once
 #include <aws/bedrock-agentcore/BedrockAgentCore_EXPORTS.h>
-#include <aws/bedrock-agentcore/model/LeftExpression.h>
-#include <aws/bedrock-agentcore/model/OperatorType.h>
-#include <aws/bedrock-agentcore/model/RightExpression.h>
+#include <aws/bedrock-agentcore/model/MemoryRecordLeftExpression.h>
+#include <aws/bedrock-agentcore/model/MemoryRecordOperatorType.h>
+#include <aws/bedrock-agentcore/model/MemoryRecordRightExpression.h>
 
 #include <utility>
 
@@ -37,15 +37,17 @@ class MemoryMetadataFilterExpression {
   AWS_BEDROCKAGENTCORE_API Aws::Utils::Json::JsonValue Jsonize() const;
 
   ///@{
-
-  inline const LeftExpression& GetLeft() const { return m_left; }
+  /**
+   * <p>The metadata key to evaluate.</p>
+   */
+  inline const MemoryRecordLeftExpression& GetLeft() const { return m_left; }
   inline bool LeftHasBeenSet() const { return m_leftHasBeenSet; }
-  template <typename LeftT = LeftExpression>
+  template <typename LeftT = MemoryRecordLeftExpression>
   void SetLeft(LeftT&& value) {
     m_leftHasBeenSet = true;
     m_left = std::forward<LeftT>(value);
   }
-  template <typename LeftT = LeftExpression>
+  template <typename LeftT = MemoryRecordLeftExpression>
   MemoryMetadataFilterExpression& WithLeft(LeftT&& value) {
     SetLeft(std::forward<LeftT>(value));
     return *this;
@@ -57,39 +59,42 @@ class MemoryMetadataFilterExpression {
    * <p>The relationship between the metadata key and value to match when applying
    * the metadata filter.</p>
    */
-  inline OperatorType GetOperator() const { return m_operator; }
+  inline MemoryRecordOperatorType GetOperator() const { return m_operator; }
   inline bool OperatorHasBeenSet() const { return m_operatorHasBeenSet; }
-  inline void SetOperator(OperatorType value) {
+  inline void SetOperator(MemoryRecordOperatorType value) {
     m_operatorHasBeenSet = true;
     m_operator = value;
   }
-  inline MemoryMetadataFilterExpression& WithOperator(OperatorType value) {
+  inline MemoryMetadataFilterExpression& WithOperator(MemoryRecordOperatorType value) {
     SetOperator(value);
     return *this;
   }
   ///@}
 
   ///@{
-
-  inline const RightExpression& GetRight() const { return m_right; }
+  /**
+   * <p>The value to compare against. Required for all operators except EXISTS and
+   * NOT_EXISTS.</p>
+   */
+  inline const MemoryRecordRightExpression& GetRight() const { return m_right; }
   inline bool RightHasBeenSet() const { return m_rightHasBeenSet; }
-  template <typename RightT = RightExpression>
+  template <typename RightT = MemoryRecordRightExpression>
   void SetRight(RightT&& value) {
     m_rightHasBeenSet = true;
     m_right = std::forward<RightT>(value);
   }
-  template <typename RightT = RightExpression>
+  template <typename RightT = MemoryRecordRightExpression>
   MemoryMetadataFilterExpression& WithRight(RightT&& value) {
     SetRight(std::forward<RightT>(value));
     return *this;
   }
   ///@}
  private:
-  LeftExpression m_left;
+  MemoryRecordLeftExpression m_left;
 
-  OperatorType m_operator{OperatorType::NOT_SET};
+  MemoryRecordOperatorType m_operator{MemoryRecordOperatorType::NOT_SET};
 
-  RightExpression m_right;
+  MemoryRecordRightExpression m_right;
   bool m_leftHasBeenSet = false;
   bool m_operatorHasBeenSet = false;
   bool m_rightHasBeenSet = false;

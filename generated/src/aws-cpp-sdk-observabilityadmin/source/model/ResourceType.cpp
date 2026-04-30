@@ -28,9 +28,12 @@ static const int AWS_BedrockAgentCore_Browser_HASH = HashingUtils::HashString("A
 static const int AWS_BedrockAgentCore_CodeInterpreter_HASH = HashingUtils::HashString("AWS::BedrockAgentCore::CodeInterpreter");
 static const int AWS_BedrockAgentCore_Gateway_HASH = HashingUtils::HashString("AWS::BedrockAgentCore::Gateway");
 static const int AWS_BedrockAgentCore_Memory_HASH = HashingUtils::HashString("AWS::BedrockAgentCore::Memory");
+static const int AWS_BedrockAgentCore_WorkloadIdentity_HASH = HashingUtils::HashString("AWS::BedrockAgentCore::WorkloadIdentity");
 static const int AWS_SecurityHub_Hub_HASH = HashingUtils::HashString("AWS::SecurityHub::Hub");
 static const int AWS_CloudFront_Distribution_HASH = HashingUtils::HashString("AWS::CloudFront::Distribution");
 static const int AWS_SecurityHub_HubV2_HASH = HashingUtils::HashString("AWS::SecurityHub::HubV2");
+static const int AWS_CloudWatch_OTelEnrichment_HASH = HashingUtils::HashString("AWS::CloudWatch::OTelEnrichment");
+static const int AWS_MSK_Cluster_HASH = HashingUtils::HashString("AWS::MSK::Cluster");
 
 ResourceType GetResourceTypeForName(const Aws::String& name) {
   int hashCode = HashingUtils::HashString(name.c_str());
@@ -60,12 +63,18 @@ ResourceType GetResourceTypeForName(const Aws::String& name) {
     return ResourceType::AWS_BedrockAgentCore_Gateway;
   } else if (hashCode == AWS_BedrockAgentCore_Memory_HASH) {
     return ResourceType::AWS_BedrockAgentCore_Memory;
+  } else if (hashCode == AWS_BedrockAgentCore_WorkloadIdentity_HASH) {
+    return ResourceType::AWS_BedrockAgentCore_WorkloadIdentity;
   } else if (hashCode == AWS_SecurityHub_Hub_HASH) {
     return ResourceType::AWS_SecurityHub_Hub;
   } else if (hashCode == AWS_CloudFront_Distribution_HASH) {
     return ResourceType::AWS_CloudFront_Distribution;
   } else if (hashCode == AWS_SecurityHub_HubV2_HASH) {
     return ResourceType::AWS_SecurityHub_HubV2;
+  } else if (hashCode == AWS_CloudWatch_OTelEnrichment_HASH) {
+    return ResourceType::AWS_CloudWatch_OTelEnrichment;
+  } else if (hashCode == AWS_MSK_Cluster_HASH) {
+    return ResourceType::AWS_MSK_Cluster;
   }
   EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
   if (overflowContainer) {
@@ -106,12 +115,18 @@ Aws::String GetNameForResourceType(ResourceType enumValue) {
       return "AWS::BedrockAgentCore::Gateway";
     case ResourceType::AWS_BedrockAgentCore_Memory:
       return "AWS::BedrockAgentCore::Memory";
+    case ResourceType::AWS_BedrockAgentCore_WorkloadIdentity:
+      return "AWS::BedrockAgentCore::WorkloadIdentity";
     case ResourceType::AWS_SecurityHub_Hub:
       return "AWS::SecurityHub::Hub";
     case ResourceType::AWS_CloudFront_Distribution:
       return "AWS::CloudFront::Distribution";
     case ResourceType::AWS_SecurityHub_HubV2:
       return "AWS::SecurityHub::HubV2";
+    case ResourceType::AWS_CloudWatch_OTelEnrichment:
+      return "AWS::CloudWatch::OTelEnrichment";
+    case ResourceType::AWS_MSK_Cluster:
+      return "AWS::MSK::Cluster";
     default:
       EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
       if (overflowContainer) {

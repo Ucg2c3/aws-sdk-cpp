@@ -5,7 +5,9 @@
 
 #pragma once
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/sagemaker/SageMaker_EXPORTS.h>
+#include <aws/sagemaker/model/InstancePool.h>
 #include <aws/sagemaker/model/ProductionVariantAcceleratorType.h>
 #include <aws/sagemaker/model/ProductionVariantCapacityReservationConfig.h>
 #include <aws/sagemaker/model/ProductionVariantCoreDumpConfig.h>
@@ -109,6 +111,54 @@ class ProductionVariant {
   }
   inline ProductionVariant& WithInstanceType(ProductionVariantInstanceType value) {
     SetInstanceType(value);
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
+   * <p>A list of instance pools for the production variant. Each instance pool
+   * specifies an instance type and its priority for provisioning. Use instance pools
+   * to configure heterogeneous endpoints that deploy models across multiple instance
+   * types.</p>
+   */
+  inline const Aws::Vector<InstancePool>& GetInstancePools() const { return m_instancePools; }
+  inline bool InstancePoolsHasBeenSet() const { return m_instancePoolsHasBeenSet; }
+  template <typename InstancePoolsT = Aws::Vector<InstancePool>>
+  void SetInstancePools(InstancePoolsT&& value) {
+    m_instancePoolsHasBeenSet = true;
+    m_instancePools = std::forward<InstancePoolsT>(value);
+  }
+  template <typename InstancePoolsT = Aws::Vector<InstancePool>>
+  ProductionVariant& WithInstancePools(InstancePoolsT&& value) {
+    SetInstancePools(std::forward<InstancePoolsT>(value));
+    return *this;
+  }
+  template <typename InstancePoolsT = InstancePool>
+  ProductionVariant& AddInstancePools(InstancePoolsT&& value) {
+    m_instancePoolsHasBeenSet = true;
+    m_instancePools.emplace_back(std::forward<InstancePoolsT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
+   * <p>The timeout value, in seconds, for provisioning instances for the production
+   * variant. When SageMaker encounters an insufficient capacity error while
+   * provisioning instances, it retries with the next instance pool (if configured)
+   * or waits until the timeout expires. This timeout applies only to capacity
+   * provisioning and does not include the time for model download or container
+   * startup.</p> <p>Valid values: 300 to 3600.</p>
+   */
+  inline int GetVariantInstanceProvisionTimeoutInSeconds() const { return m_variantInstanceProvisionTimeoutInSeconds; }
+  inline bool VariantInstanceProvisionTimeoutInSecondsHasBeenSet() const { return m_variantInstanceProvisionTimeoutInSecondsHasBeenSet; }
+  inline void SetVariantInstanceProvisionTimeoutInSeconds(int value) {
+    m_variantInstanceProvisionTimeoutInSecondsHasBeenSet = true;
+    m_variantInstanceProvisionTimeoutInSeconds = value;
+  }
+  inline ProductionVariant& WithVariantInstanceProvisionTimeoutInSeconds(int value) {
+    SetVariantInstanceProvisionTimeoutInSeconds(value);
     return *this;
   }
   ///@}
@@ -371,6 +421,10 @@ class ProductionVariant {
 
   ProductionVariantInstanceType m_instanceType{ProductionVariantInstanceType::NOT_SET};
 
+  Aws::Vector<InstancePool> m_instancePools;
+
+  int m_variantInstanceProvisionTimeoutInSeconds{0};
+
   double m_initialVariantWeight{0.0};
 
   ProductionVariantAcceleratorType m_acceleratorType{ProductionVariantAcceleratorType::NOT_SET};
@@ -398,6 +452,8 @@ class ProductionVariant {
   bool m_modelNameHasBeenSet = false;
   bool m_initialInstanceCountHasBeenSet = false;
   bool m_instanceTypeHasBeenSet = false;
+  bool m_instancePoolsHasBeenSet = false;
+  bool m_variantInstanceProvisionTimeoutInSecondsHasBeenSet = false;
   bool m_initialVariantWeightHasBeenSet = false;
   bool m_acceleratorTypeHasBeenSet = false;
   bool m_coreDumpConfigHasBeenSet = false;

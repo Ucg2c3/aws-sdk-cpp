@@ -42,6 +42,15 @@ CustomOauth2ProviderConfigInput& CustomOauth2ProviderConfigInput::operator=(Json
     }
     m_privateEndpointOverridesHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("onBehalfOfTokenExchangeConfig")) {
+    m_onBehalfOfTokenExchangeConfig = jsonValue.GetObject("onBehalfOfTokenExchangeConfig");
+    m_onBehalfOfTokenExchangeConfigHasBeenSet = true;
+  }
+  if (jsonValue.ValueExists("clientAuthenticationMethod")) {
+    m_clientAuthenticationMethod =
+        ClientAuthenticationMethodTypeMapper::GetClientAuthenticationMethodTypeForName(jsonValue.GetString("clientAuthenticationMethod"));
+    m_clientAuthenticationMethodHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -72,6 +81,15 @@ JsonValue CustomOauth2ProviderConfigInput::Jsonize() const {
           m_privateEndpointOverrides[privateEndpointOverridesIndex].Jsonize());
     }
     payload.WithArray("privateEndpointOverrides", std::move(privateEndpointOverridesJsonList));
+  }
+
+  if (m_onBehalfOfTokenExchangeConfigHasBeenSet) {
+    payload.WithObject("onBehalfOfTokenExchangeConfig", m_onBehalfOfTokenExchangeConfig.Jsonize());
+  }
+
+  if (m_clientAuthenticationMethodHasBeenSet) {
+    payload.WithString("clientAuthenticationMethod",
+                       ClientAuthenticationMethodTypeMapper::GetNameForClientAuthenticationMethodType(m_clientAuthenticationMethod));
   }
 
   return payload;

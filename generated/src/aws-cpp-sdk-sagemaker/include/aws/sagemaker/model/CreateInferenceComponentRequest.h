@@ -110,6 +110,34 @@ class CreateInferenceComponentRequest : public SageMakerRequest {
 
   ///@{
   /**
+   * <p>A list of specification objects for the inference component, one per instance
+   * type. Use this parameter when you want to deploy a different model or resource
+   * configuration for the inference component on each instance type. You can use
+   * either this parameter or the singular <code>Specification</code> parameter, but
+   * not both.</p>
+   */
+  inline const Aws::Vector<InferenceComponentSpecification>& GetSpecifications() const { return m_specifications; }
+  inline bool SpecificationsHasBeenSet() const { return m_specificationsHasBeenSet; }
+  template <typename SpecificationsT = Aws::Vector<InferenceComponentSpecification>>
+  void SetSpecifications(SpecificationsT&& value) {
+    m_specificationsHasBeenSet = true;
+    m_specifications = std::forward<SpecificationsT>(value);
+  }
+  template <typename SpecificationsT = Aws::Vector<InferenceComponentSpecification>>
+  CreateInferenceComponentRequest& WithSpecifications(SpecificationsT&& value) {
+    SetSpecifications(std::forward<SpecificationsT>(value));
+    return *this;
+  }
+  template <typename SpecificationsT = InferenceComponentSpecification>
+  CreateInferenceComponentRequest& AddSpecifications(SpecificationsT&& value) {
+    m_specificationsHasBeenSet = true;
+    m_specifications.emplace_back(std::forward<SpecificationsT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
    * <p>Runtime settings for a model that is deployed with an inference
    * component.</p>
    */
@@ -163,6 +191,8 @@ class CreateInferenceComponentRequest : public SageMakerRequest {
 
   InferenceComponentSpecification m_specification;
 
+  Aws::Vector<InferenceComponentSpecification> m_specifications;
+
   InferenceComponentRuntimeConfig m_runtimeConfig;
 
   Aws::Vector<Tag> m_tags;
@@ -170,6 +200,7 @@ class CreateInferenceComponentRequest : public SageMakerRequest {
   bool m_endpointNameHasBeenSet = false;
   bool m_variantNameHasBeenSet = false;
   bool m_specificationHasBeenSet = false;
+  bool m_specificationsHasBeenSet = false;
   bool m_runtimeConfigHasBeenSet = false;
   bool m_tagsHasBeenSet = false;
 };

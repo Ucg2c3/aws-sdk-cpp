@@ -58,6 +58,10 @@ MemoryStrategy& MemoryStrategy::operator=(JsonView jsonValue) {
     m_status = MemoryStrategyStatusMapper::GetMemoryStrategyStatusForName(jsonValue.GetString("status"));
     m_statusHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("memoryRecordSchema")) {
+    m_memoryRecordSchema = jsonValue.GetObject("memoryRecordSchema");
+    m_memoryRecordSchemaHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -103,6 +107,10 @@ JsonValue MemoryStrategy::Jsonize() const {
 
   if (m_statusHasBeenSet) {
     payload.WithString("status", MemoryStrategyStatusMapper::GetNameForMemoryStrategyStatus(m_status));
+  }
+
+  if (m_memoryRecordSchemaHasBeenSet) {
+    payload.WithObject("memoryRecordSchema", m_memoryRecordSchema.Jsonize());
   }
 
   return payload;

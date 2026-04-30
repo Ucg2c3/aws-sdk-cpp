@@ -31,5 +31,13 @@ Aws::String UpdateGlobalResolverRequest::SerializePayload() const {
     payload.WithString("ipAddressType", GlobalResolverIpAddressTypeMapper::GetNameForGlobalResolverIpAddressType(m_ipAddressType));
   }
 
+  if (m_regionsHasBeenSet) {
+    Aws::Utils::Array<JsonValue> regionsJsonList(m_regions.size());
+    for (unsigned regionsIndex = 0; regionsIndex < regionsJsonList.GetLength(); ++regionsIndex) {
+      regionsJsonList[regionsIndex].AsString(m_regions[regionsIndex]);
+    }
+    payload.WithArray("regions", std::move(regionsJsonList));
+  }
+
   return payload.View().WriteReadable();
 }

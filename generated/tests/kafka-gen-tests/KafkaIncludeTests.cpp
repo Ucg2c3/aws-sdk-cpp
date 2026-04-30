@@ -268,6 +268,7 @@
 #include <aws/kafka/model/VpcConnectivitySasl.h>
 #include <aws/kafka/model/VpcConnectivityScram.h>
 #include <aws/kafka/model/VpcConnectivityTls.h>
+#include <aws/kafka/model/ZookeeperAccess.h>
 #include <aws/kafka/model/ZookeeperNodeInfo.h>
 
 using KafkaIncludeTest = ::testing::Test;

@@ -930,6 +930,7 @@
 #include <aws/sagemaker/model/InferenceComponentDataCacheConfigSummary.h>
 #include <aws/sagemaker/model/InferenceComponentDeploymentConfig.h>
 #include <aws/sagemaker/model/InferenceComponentMetadata.h>
+#include <aws/sagemaker/model/InferenceComponentPlacementStatus.h>
 #include <aws/sagemaker/model/InferenceComponentPlacementStrategy.h>
 #include <aws/sagemaker/model/InferenceComponentRollingUpdatePolicy.h>
 #include <aws/sagemaker/model/InferenceComponentRuntimeConfig.h>
@@ -966,6 +967,8 @@
 #include <aws/sagemaker/model/InstanceMetadata.h>
 #include <aws/sagemaker/model/InstanceMetadataServiceConfiguration.h>
 #include <aws/sagemaker/model/InstancePlacementConfig.h>
+#include <aws/sagemaker/model/InstancePool.h>
+#include <aws/sagemaker/model/InstancePoolSummary.h>
 #include <aws/sagemaker/model/InstanceType.h>
 #include <aws/sagemaker/model/IntegerParameterRange.h>
 #include <aws/sagemaker/model/IntegerParameterRangeSpecification.h>

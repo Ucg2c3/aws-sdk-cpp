@@ -6,7 +6,9 @@
 #pragma once
 #include <aws/bedrock-agentcore/BedrockAgentCoreRequest.h>
 #include <aws/bedrock-agentcore/BedrockAgentCore_EXPORTS.h>
+#include <aws/bedrock-agentcore/model/MemoryMetadataFilterExpression.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 
 #include <utility>
 
@@ -139,6 +141,31 @@ class ListMemoryRecordsRequest : public BedrockAgentCoreRequest {
     return *this;
   }
   ///@}
+
+  ///@{
+  /**
+   * <p>A list of metadata filter expressions to scope the returned memory
+   * records.</p>
+   */
+  inline const Aws::Vector<MemoryMetadataFilterExpression>& GetMetadataFilters() const { return m_metadataFilters; }
+  inline bool MetadataFiltersHasBeenSet() const { return m_metadataFiltersHasBeenSet; }
+  template <typename MetadataFiltersT = Aws::Vector<MemoryMetadataFilterExpression>>
+  void SetMetadataFilters(MetadataFiltersT&& value) {
+    m_metadataFiltersHasBeenSet = true;
+    m_metadataFilters = std::forward<MetadataFiltersT>(value);
+  }
+  template <typename MetadataFiltersT = Aws::Vector<MemoryMetadataFilterExpression>>
+  ListMemoryRecordsRequest& WithMetadataFilters(MetadataFiltersT&& value) {
+    SetMetadataFilters(std::forward<MetadataFiltersT>(value));
+    return *this;
+  }
+  template <typename MetadataFiltersT = MemoryMetadataFilterExpression>
+  ListMemoryRecordsRequest& AddMetadataFilters(MetadataFiltersT&& value) {
+    m_metadataFiltersHasBeenSet = true;
+    m_metadataFilters.emplace_back(std::forward<MetadataFiltersT>(value));
+    return *this;
+  }
+  ///@}
  private:
   Aws::String m_memoryId;
 
@@ -151,12 +178,15 @@ class ListMemoryRecordsRequest : public BedrockAgentCoreRequest {
   int m_maxResults{0};
 
   Aws::String m_nextToken;
+
+  Aws::Vector<MemoryMetadataFilterExpression> m_metadataFilters;
   bool m_memoryIdHasBeenSet = false;
   bool m_namespaceHasBeenSet = false;
   bool m_namespacePathHasBeenSet = false;
   bool m_memoryStrategyIdHasBeenSet = false;
   bool m_maxResultsHasBeenSet = false;
   bool m_nextTokenHasBeenSet = false;
+  bool m_metadataFiltersHasBeenSet = false;
 };
 
 }  // namespace Model

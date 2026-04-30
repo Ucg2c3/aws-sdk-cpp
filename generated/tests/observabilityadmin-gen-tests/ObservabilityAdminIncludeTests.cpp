@@ -98,6 +98,8 @@
 #include <aws/observabilityadmin/model/LoggingFilter.h>
 #include <aws/observabilityadmin/model/LogsBackupConfiguration.h>
 #include <aws/observabilityadmin/model/LogsEncryptionConfiguration.h>
+#include <aws/observabilityadmin/model/MskEnhancedMonitoringLevel.h>
+#include <aws/observabilityadmin/model/MskMonitoringParameters.h>
 #include <aws/observabilityadmin/model/OutputFormat.h>
 #include <aws/observabilityadmin/model/PipelineOutput.h>
 #include <aws/observabilityadmin/model/PipelineOutputError.h>

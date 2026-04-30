@@ -26,6 +26,13 @@ InferenceComponentRuntimeConfigSummary& InferenceComponentRuntimeConfigSummary::
     m_currentCopyCount = jsonValue.GetInteger("CurrentCopyCount");
     m_currentCopyCountHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("PlacementStatus")) {
+    Aws::Utils::Array<JsonView> placementStatusJsonList = jsonValue.GetArray("PlacementStatus");
+    for (unsigned placementStatusIndex = 0; placementStatusIndex < placementStatusJsonList.GetLength(); ++placementStatusIndex) {
+      m_placementStatus.push_back(placementStatusJsonList[placementStatusIndex].AsObject());
+    }
+    m_placementStatusHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -38,6 +45,14 @@ JsonValue InferenceComponentRuntimeConfigSummary::Jsonize() const {
 
   if (m_currentCopyCountHasBeenSet) {
     payload.WithInteger("CurrentCopyCount", m_currentCopyCount);
+  }
+
+  if (m_placementStatusHasBeenSet) {
+    Aws::Utils::Array<JsonValue> placementStatusJsonList(m_placementStatus.size());
+    for (unsigned placementStatusIndex = 0; placementStatusIndex < placementStatusJsonList.GetLength(); ++placementStatusIndex) {
+      placementStatusJsonList[placementStatusIndex].AsObject(m_placementStatus[placementStatusIndex].Jsonize());
+    }
+    payload.WithArray("PlacementStatus", std::move(placementStatusJsonList));
   }
 
   return payload;

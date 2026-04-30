@@ -16,6 +16,7 @@
 #include <aws/bedrock-agentcore-control/BedrockAgentCoreControl_EXPORTS.h>
 #include <aws/bedrock-agentcore-control/model/A2aDescriptor.h>
 #include <aws/bedrock-agentcore-control/model/Action.h>
+#include <aws/bedrock-agentcore-control/model/ActorTokenContentType.h>
 #include <aws/bedrock-agentcore-control/model/AgentCardDefinition.h>
 #include <aws/bedrock-agentcore-control/model/AgentManagedRuntimeType.h>
 #include <aws/bedrock-agentcore-control/model/AgentRuntime.h>
@@ -56,6 +57,7 @@
 #include <aws/bedrock-agentcore-control/model/CertificateLocation.h>
 #include <aws/bedrock-agentcore-control/model/ClaimMatchOperatorType.h>
 #include <aws/bedrock-agentcore-control/model/ClaimMatchValueType.h>
+#include <aws/bedrock-agentcore-control/model/ClientAuthenticationMethodType.h>
 #include <aws/bedrock-agentcore-control/model/CloudWatchLogsInputConfig.h>
 #include <aws/bedrock-agentcore-control/model/CloudWatchOutputConfig.h>
 #include <aws/bedrock-agentcore-control/model/Code.h>
@@ -200,6 +202,7 @@
 #include <aws/bedrock-agentcore-control/model/EvaluatorSummary.h>
 #include <aws/bedrock-agentcore-control/model/EvaluatorType.h>
 #include <aws/bedrock-agentcore-control/model/ExceptionLevel.h>
+#include <aws/bedrock-agentcore-control/model/ExtractionConfig.h>
 #include <aws/bedrock-agentcore-control/model/ExtractionConfiguration.h>
 #include <aws/bedrock-agentcore-control/model/FilesystemConfiguration.h>
 #include <aws/bedrock-agentcore-control/model/Filter.h>
@@ -309,6 +312,7 @@
 #include <aws/bedrock-agentcore-control/model/IncludedData.h>
 #include <aws/bedrock-agentcore-control/model/IncludedOauth2ProviderConfigInput.h>
 #include <aws/bedrock-agentcore-control/model/IncludedOauth2ProviderConfigOutput.h>
+#include <aws/bedrock-agentcore-control/model/IndexedKey.h>
 #include <aws/bedrock-agentcore-control/model/InferenceConfiguration.h>
 #include <aws/bedrock-agentcore-control/model/InterceptorConfiguration.h>
 #include <aws/bedrock-agentcore-control/model/InterceptorInputConfiguration.h>
@@ -374,6 +378,7 @@
 #include <aws/bedrock-agentcore-control/model/ListWorkloadIdentitiesResult.h>
 #include <aws/bedrock-agentcore-control/model/ListingMode.h>
 #include <aws/bedrock-agentcore-control/model/LlmAsAJudgeEvaluatorConfig.h>
+#include <aws/bedrock-agentcore-control/model/LlmExtractionConfig.h>
 #include <aws/bedrock-agentcore-control/model/MCPGatewayConfiguration.h>
 #include <aws/bedrock-agentcore-control/model/ManagedResourceDetails.h>
 #include <aws/bedrock-agentcore-control/model/ManagedVpcResource.h>
@@ -386,6 +391,7 @@
 #include <aws/bedrock-agentcore-control/model/McpTargetConfiguration.h>
 #include <aws/bedrock-agentcore-control/model/McpToolSchemaConfiguration.h>
 #include <aws/bedrock-agentcore-control/model/Memory.h>
+#include <aws/bedrock-agentcore-control/model/MemoryRecordSchema.h>
 #include <aws/bedrock-agentcore-control/model/MemoryStatus.h>
 #include <aws/bedrock-agentcore-control/model/MemoryStrategy.h>
 #include <aws/bedrock-agentcore-control/model/MemoryStrategyInput.h>
@@ -396,6 +402,8 @@
 #include <aws/bedrock-agentcore-control/model/MessageBasedTrigger.h>
 #include <aws/bedrock-agentcore-control/model/MessageBasedTriggerInput.h>
 #include <aws/bedrock-agentcore-control/model/MetadataConfiguration.h>
+#include <aws/bedrock-agentcore-control/model/MetadataSchemaEntry.h>
+#include <aws/bedrock-agentcore-control/model/MetadataValueType.h>
 #include <aws/bedrock-agentcore-control/model/MicrosoftOauth2ProviderConfigInput.h>
 #include <aws/bedrock-agentcore-control/model/MicrosoftOauth2ProviderConfigOutput.h>
 #include <aws/bedrock-agentcore-control/model/ModifyConsolidationConfiguration.h>
@@ -408,6 +416,7 @@
 #include <aws/bedrock-agentcore-control/model/ModifyStrategyConfiguration.h>
 #include <aws/bedrock-agentcore-control/model/NetworkConfiguration.h>
 #include <aws/bedrock-agentcore-control/model/NetworkMode.h>
+#include <aws/bedrock-agentcore-control/model/NumberValidation.h>
 #include <aws/bedrock-agentcore-control/model/NumericalScaleDefinition.h>
 #include <aws/bedrock-agentcore-control/model/OAuth2AuthorizationData.h>
 #include <aws/bedrock-agentcore-control/model/OAuthCredentialProvider.h>
@@ -417,6 +426,8 @@
 #include <aws/bedrock-agentcore-control/model/Oauth2Discovery.h>
 #include <aws/bedrock-agentcore-control/model/Oauth2ProviderConfigInput.h>
 #include <aws/bedrock-agentcore-control/model/Oauth2ProviderConfigOutput.h>
+#include <aws/bedrock-agentcore-control/model/OnBehalfOfTokenExchangeConfigType.h>
+#include <aws/bedrock-agentcore-control/model/OnBehalfOfTokenExchangeGrantTypeType.h>
 #include <aws/bedrock-agentcore-control/model/OnlineEvaluationConfigStatus.h>
 #include <aws/bedrock-agentcore-control/model/OnlineEvaluationConfigSummary.h>
 #include <aws/bedrock-agentcore-control/model/OnlineEvaluationExecutionStatus.h>
@@ -498,6 +509,8 @@
 #include <aws/bedrock-agentcore-control/model/StrategyConfiguration.h>
 #include <aws/bedrock-agentcore-control/model/StreamDeliveryResource.h>
 #include <aws/bedrock-agentcore-control/model/StreamDeliveryResources.h>
+#include <aws/bedrock-agentcore-control/model/StringListValidation.h>
+#include <aws/bedrock-agentcore-control/model/StringValidation.h>
 #include <aws/bedrock-agentcore-control/model/SubmitRegistryRecordForApprovalRequest.h>
 #include <aws/bedrock-agentcore-control/model/SubmitRegistryRecordForApprovalResult.h>
 #include <aws/bedrock-agentcore-control/model/SummaryConsolidationOverride.h>
@@ -520,6 +533,7 @@
 #include <aws/bedrock-agentcore-control/model/TimeBasedTriggerInput.h>
 #include <aws/bedrock-agentcore-control/model/TokenBasedTrigger.h>
 #include <aws/bedrock-agentcore-control/model/TokenBasedTriggerInput.h>
+#include <aws/bedrock-agentcore-control/model/TokenExchangeGrantTypeConfigType.h>
 #include <aws/bedrock-agentcore-control/model/ToolDefinition.h>
 #include <aws/bedrock-agentcore-control/model/ToolSchema.h>
 #include <aws/bedrock-agentcore-control/model/ToolsDefinition.h>
@@ -590,6 +604,7 @@
 #include <aws/bedrock-agentcore-control/model/UserPreferenceOverrideConfigurationInput.h>
 #include <aws/bedrock-agentcore-control/model/UserPreferenceOverrideConsolidationConfigurationInput.h>
 #include <aws/bedrock-agentcore-control/model/UserPreferenceOverrideExtractionConfigurationInput.h>
+#include <aws/bedrock-agentcore-control/model/Validation.h>
 #include <aws/bedrock-agentcore-control/model/ValidationException.h>
 #include <aws/bedrock-agentcore-control/model/ValidationExceptionField.h>
 #include <aws/bedrock-agentcore-control/model/ValidationExceptionReason.h>

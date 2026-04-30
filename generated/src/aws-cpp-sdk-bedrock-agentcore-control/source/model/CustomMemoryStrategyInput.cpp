@@ -38,6 +38,10 @@ CustomMemoryStrategyInput& CustomMemoryStrategyInput::operator=(JsonView jsonVal
     m_configuration = jsonValue.GetObject("configuration");
     m_configurationHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("memoryRecordSchema")) {
+    m_memoryRecordSchema = jsonValue.GetObject("memoryRecordSchema");
+    m_memoryRecordSchemaHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -63,6 +67,10 @@ JsonValue CustomMemoryStrategyInput::Jsonize() const {
 
   if (m_configurationHasBeenSet) {
     payload.WithObject("configuration", m_configuration.Jsonize());
+  }
+
+  if (m_memoryRecordSchemaHasBeenSet) {
+    payload.WithObject("memoryRecordSchema", m_memoryRecordSchema.Jsonize());
   }
 
   return payload;

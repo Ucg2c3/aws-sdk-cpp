@@ -13,6 +13,7 @@
 #include <aws/payment-cryptography/model/KeyCheckValueAlgorithm.h>
 #include <aws/payment-cryptography/model/KeyOrigin.h>
 #include <aws/payment-cryptography/model/KeyState.h>
+#include <aws/payment-cryptography/model/MpaStatus.h>
 #include <aws/payment-cryptography/model/MultiRegionKeyType.h>
 #include <aws/payment-cryptography/model/ReplicationStatusType.h>
 
@@ -389,6 +390,24 @@ class Key {
     return *this;
   }
   ///@}
+
+  ///@{
+  /**
+   * <p>The Multi-Party Approval (MPA) status for the key, if applicable.</p>
+   */
+  inline const MpaStatus& GetMpaStatus() const { return m_mpaStatus; }
+  inline bool MpaStatusHasBeenSet() const { return m_mpaStatusHasBeenSet; }
+  template <typename MpaStatusT = MpaStatus>
+  void SetMpaStatus(MpaStatusT&& value) {
+    m_mpaStatusHasBeenSet = true;
+    m_mpaStatus = std::forward<MpaStatusT>(value);
+  }
+  template <typename MpaStatusT = MpaStatus>
+  Key& WithMpaStatus(MpaStatusT&& value) {
+    SetMpaStatus(std::forward<MpaStatusT>(value));
+    return *this;
+  }
+  ///@}
  private:
   Aws::String m_keyArn;
 
@@ -425,6 +444,8 @@ class Key {
   Aws::Map<Aws::String, ReplicationStatusType> m_replicationStatus;
 
   bool m_usingDefaultReplicationRegions{false};
+
+  MpaStatus m_mpaStatus;
   bool m_keyArnHasBeenSet = false;
   bool m_keyAttributesHasBeenSet = false;
   bool m_keyCheckValueHasBeenSet = false;
@@ -443,6 +464,7 @@ class Key {
   bool m_primaryRegionHasBeenSet = false;
   bool m_replicationStatusHasBeenSet = false;
   bool m_usingDefaultReplicationRegionsHasBeenSet = false;
+  bool m_mpaStatusHasBeenSet = false;
 };
 
 }  // namespace Model

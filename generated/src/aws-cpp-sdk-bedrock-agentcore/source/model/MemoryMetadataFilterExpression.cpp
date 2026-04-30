@@ -23,7 +23,7 @@ MemoryMetadataFilterExpression& MemoryMetadataFilterExpression::operator=(JsonVi
     m_leftHasBeenSet = true;
   }
   if (jsonValue.ValueExists("operator")) {
-    m_operator = OperatorTypeMapper::GetOperatorTypeForName(jsonValue.GetString("operator"));
+    m_operator = MemoryRecordOperatorTypeMapper::GetMemoryRecordOperatorTypeForName(jsonValue.GetString("operator"));
     m_operatorHasBeenSet = true;
   }
   if (jsonValue.ValueExists("right")) {
@@ -41,7 +41,7 @@ JsonValue MemoryMetadataFilterExpression::Jsonize() const {
   }
 
   if (m_operatorHasBeenSet) {
-    payload.WithString("operator", OperatorTypeMapper::GetNameForOperatorType(m_operator));
+    payload.WithString("operator", MemoryRecordOperatorTypeMapper::GetNameForMemoryRecordOperatorType(m_operator));
   }
 
   if (m_rightHasBeenSet) {

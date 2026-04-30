@@ -8,6 +8,7 @@
 #include <aws/kafka/KafkaRequest.h>
 #include <aws/kafka/Kafka_EXPORTS.h>
 #include <aws/kafka/model/ConnectivityInfo.h>
+#include <aws/kafka/model/ZookeeperAccess.h>
 
 #include <utility>
 
@@ -95,15 +96,38 @@ class UpdateConnectivityRequest : public KafkaRequest {
     return *this;
   }
   ///@}
+
+  ///@{
+  /**
+   *
+          <p>Access control settings for zookeeper</p>
+
+   */
+  inline const ZookeeperAccess& GetZookeeperAccess() const { return m_zookeeperAccess; }
+  inline bool ZookeeperAccessHasBeenSet() const { return m_zookeeperAccessHasBeenSet; }
+  template <typename ZookeeperAccessT = ZookeeperAccess>
+  void SetZookeeperAccess(ZookeeperAccessT&& value) {
+    m_zookeeperAccessHasBeenSet = true;
+    m_zookeeperAccess = std::forward<ZookeeperAccessT>(value);
+  }
+  template <typename ZookeeperAccessT = ZookeeperAccess>
+  UpdateConnectivityRequest& WithZookeeperAccess(ZookeeperAccessT&& value) {
+    SetZookeeperAccess(std::forward<ZookeeperAccessT>(value));
+    return *this;
+  }
+  ///@}
  private:
   Aws::String m_clusterArn;
 
   ConnectivityInfo m_connectivityInfo;
 
   Aws::String m_currentVersion;
+
+  ZookeeperAccess m_zookeeperAccess;
   bool m_clusterArnHasBeenSet = false;
   bool m_connectivityInfoHasBeenSet = false;
   bool m_currentVersionHasBeenSet = false;
+  bool m_zookeeperAccessHasBeenSet = false;
 };
 
 }  // namespace Model

@@ -42,6 +42,10 @@ MutableClusterInfo& MutableClusterInfo::operator=(JsonView jsonValue) {
     m_openMonitoring = jsonValue.GetObject("openMonitoring");
     m_openMonitoringHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("zookeeperAccess")) {
+    m_zookeeperAccess = jsonValue.GetObject("zookeeperAccess");
+    m_zookeeperAccessHasBeenSet = true;
+  }
   if (jsonValue.ValueExists("kafkaVersion")) {
     m_kafkaVersion = jsonValue.GetString("kafkaVersion");
     m_kafkaVersionHasBeenSet = true;
@@ -107,6 +111,10 @@ JsonValue MutableClusterInfo::Jsonize() const {
 
   if (m_openMonitoringHasBeenSet) {
     payload.WithObject("openMonitoring", m_openMonitoring.Jsonize());
+  }
+
+  if (m_zookeeperAccessHasBeenSet) {
+    payload.WithObject("zookeeperAccess", m_zookeeperAccess.Jsonize());
   }
 
   if (m_kafkaVersionHasBeenSet) {

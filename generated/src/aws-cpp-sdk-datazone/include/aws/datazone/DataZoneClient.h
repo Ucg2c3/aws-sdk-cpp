@@ -2816,6 +2816,32 @@ class AWS_DATAZONE_API DataZoneClient : public Aws::Client::AWSJsonClient,
   }
 
   /**
+   * <p>Gets the details of a notebook run in an Amazon DataZone
+   * domain.</p><p><h3>See Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datazone-2018-05-10/GetNotebookRun">AWS
+   * API Reference</a></p>
+   */
+  virtual Model::GetNotebookRunOutcome GetNotebookRun(const Model::GetNotebookRunRequest& request) const;
+
+  /**
+   * A Callable wrapper for GetNotebookRun that returns a future to the operation so that it can be executed in parallel to other requests.
+   */
+  template <typename GetNotebookRunRequestT = Model::GetNotebookRunRequest>
+  Model::GetNotebookRunOutcomeCallable GetNotebookRunCallable(const GetNotebookRunRequestT& request) const {
+    return SubmitCallable(&DataZoneClient::GetNotebookRun, request);
+  }
+
+  /**
+   * An Async wrapper for GetNotebookRun that queues the request into a thread executor and triggers associated callback when operation has
+   * finished.
+   */
+  template <typename GetNotebookRunRequestT = Model::GetNotebookRunRequest>
+  void GetNotebookRunAsync(const GetNotebookRunRequestT& request, const GetNotebookRunResponseReceivedHandler& handler,
+                           const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
+    return SubmitAsync(&DataZoneClient::GetNotebookRun, request, handler, context);
+  }
+
+  /**
    * <p>Gets a project in Amazon DataZone.</p><p><h3>See Also:</h3>   <a
    * href="http://docs.aws.amazon.com/goto/WebAPI/datazone-2018-05-10/GetProject">AWS
    * API Reference</a></p>
@@ -3642,6 +3668,33 @@ class AWS_DATAZONE_API DataZoneClient : public Aws::Client::AWSJsonClient,
                                        const ListMetadataGenerationRunsResponseReceivedHandler& handler,
                                        const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
     return SubmitAsync(&DataZoneClient::ListMetadataGenerationRuns, request, handler, context);
+  }
+
+  /**
+   * <p>Lists notebook runs in an Amazon DataZone domain.</p><p><h3>See Also:</h3>
+   * <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datazone-2018-05-10/ListNotebookRuns">AWS
+   * API Reference</a></p>
+   */
+  virtual Model::ListNotebookRunsOutcome ListNotebookRuns(const Model::ListNotebookRunsRequest& request) const;
+
+  /**
+   * A Callable wrapper for ListNotebookRuns that returns a future to the operation so that it can be executed in parallel to other
+   * requests.
+   */
+  template <typename ListNotebookRunsRequestT = Model::ListNotebookRunsRequest>
+  Model::ListNotebookRunsOutcomeCallable ListNotebookRunsCallable(const ListNotebookRunsRequestT& request) const {
+    return SubmitCallable(&DataZoneClient::ListNotebookRuns, request);
+  }
+
+  /**
+   * An Async wrapper for ListNotebookRuns that queues the request into a thread executor and triggers associated callback when operation
+   * has finished.
+   */
+  template <typename ListNotebookRunsRequestT = Model::ListNotebookRunsRequest>
+  void ListNotebookRunsAsync(const ListNotebookRunsRequestT& request, const ListNotebookRunsResponseReceivedHandler& handler,
+                             const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
+    return SubmitAsync(&DataZoneClient::ListNotebookRuns, request, handler, context);
   }
 
   /**
@@ -4526,6 +4579,61 @@ class AWS_DATAZONE_API DataZoneClient : public Aws::Client::AWSJsonClient,
                                        const StartMetadataGenerationRunResponseReceivedHandler& handler,
                                        const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
     return SubmitAsync(&DataZoneClient::StartMetadataGenerationRun, request, handler, context);
+  }
+
+  /**
+   * <p>Starts a notebook run in an Amazon DataZone domain. A notebook run represents
+   * the execution of a Amazon DataZone notebook within a project. You can configure
+   * compute, network, timeout, and environment settings for the run.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datazone-2018-05-10/StartNotebookRun">AWS
+   * API Reference</a></p>
+   */
+  virtual Model::StartNotebookRunOutcome StartNotebookRun(const Model::StartNotebookRunRequest& request) const;
+
+  /**
+   * A Callable wrapper for StartNotebookRun that returns a future to the operation so that it can be executed in parallel to other
+   * requests.
+   */
+  template <typename StartNotebookRunRequestT = Model::StartNotebookRunRequest>
+  Model::StartNotebookRunOutcomeCallable StartNotebookRunCallable(const StartNotebookRunRequestT& request) const {
+    return SubmitCallable(&DataZoneClient::StartNotebookRun, request);
+  }
+
+  /**
+   * An Async wrapper for StartNotebookRun that queues the request into a thread executor and triggers associated callback when operation
+   * has finished.
+   */
+  template <typename StartNotebookRunRequestT = Model::StartNotebookRunRequest>
+  void StartNotebookRunAsync(const StartNotebookRunRequestT& request, const StartNotebookRunResponseReceivedHandler& handler,
+                             const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
+    return SubmitAsync(&DataZoneClient::StartNotebookRun, request, handler, context);
+  }
+
+  /**
+   * <p>Stops a running notebook run in an Amazon DataZone domain.</p><p><h3>See
+   * Also:</h3>   <a
+   * href="http://docs.aws.amazon.com/goto/WebAPI/datazone-2018-05-10/StopNotebookRun">AWS
+   * API Reference</a></p>
+   */
+  virtual Model::StopNotebookRunOutcome StopNotebookRun(const Model::StopNotebookRunRequest& request) const;
+
+  /**
+   * A Callable wrapper for StopNotebookRun that returns a future to the operation so that it can be executed in parallel to other requests.
+   */
+  template <typename StopNotebookRunRequestT = Model::StopNotebookRunRequest>
+  Model::StopNotebookRunOutcomeCallable StopNotebookRunCallable(const StopNotebookRunRequestT& request) const {
+    return SubmitCallable(&DataZoneClient::StopNotebookRun, request);
+  }
+
+  /**
+   * An Async wrapper for StopNotebookRun that queues the request into a thread executor and triggers associated callback when operation has
+   * finished.
+   */
+  template <typename StopNotebookRunRequestT = Model::StopNotebookRunRequest>
+  void StopNotebookRunAsync(const StopNotebookRunRequestT& request, const StopNotebookRunResponseReceivedHandler& handler,
+                            const std::shared_ptr<const Aws::Client::AsyncCallerContext>& context = nullptr) const {
+    return SubmitAsync(&DataZoneClient::StopNotebookRun, request, handler, context);
   }
 
   /**

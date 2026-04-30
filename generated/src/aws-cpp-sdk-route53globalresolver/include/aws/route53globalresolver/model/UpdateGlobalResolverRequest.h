@@ -5,6 +5,7 @@
 
 #pragma once
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/route53globalresolver/Route53GlobalResolverRequest.h>
 #include <aws/route53globalresolver/Route53GlobalResolver_EXPORTS.h>
 #include <aws/route53globalresolver/model/GlobalResolverIpAddressType.h>
@@ -118,6 +119,32 @@ class UpdateGlobalResolverRequest : public Route53GlobalResolverRequest {
     return *this;
   }
   ///@}
+
+  ///@{
+  /**
+   * <p>The list of Amazon Web Services Regions where the Global Resolver will
+   * operate. The resolver will be distributed across these Regions to provide global
+   * availability and low-latency DNS resolution.</p>
+   */
+  inline const Aws::Vector<Aws::String>& GetRegions() const { return m_regions; }
+  inline bool RegionsHasBeenSet() const { return m_regionsHasBeenSet; }
+  template <typename RegionsT = Aws::Vector<Aws::String>>
+  void SetRegions(RegionsT&& value) {
+    m_regionsHasBeenSet = true;
+    m_regions = std::forward<RegionsT>(value);
+  }
+  template <typename RegionsT = Aws::Vector<Aws::String>>
+  UpdateGlobalResolverRequest& WithRegions(RegionsT&& value) {
+    SetRegions(std::forward<RegionsT>(value));
+    return *this;
+  }
+  template <typename RegionsT = Aws::String>
+  UpdateGlobalResolverRequest& AddRegions(RegionsT&& value) {
+    m_regionsHasBeenSet = true;
+    m_regions.emplace_back(std::forward<RegionsT>(value));
+    return *this;
+  }
+  ///@}
  private:
   Aws::String m_globalResolverId;
 
@@ -128,11 +155,14 @@ class UpdateGlobalResolverRequest : public Route53GlobalResolverRequest {
   Aws::String m_description;
 
   GlobalResolverIpAddressType m_ipAddressType{GlobalResolverIpAddressType::NOT_SET};
+
+  Aws::Vector<Aws::String> m_regions;
   bool m_globalResolverIdHasBeenSet = false;
   bool m_nameHasBeenSet = false;
   bool m_observabilityRegionHasBeenSet = false;
   bool m_descriptionHasBeenSet = false;
   bool m_ipAddressTypeHasBeenSet = false;
+  bool m_regionsHasBeenSet = false;
 };
 
 }  // namespace Model

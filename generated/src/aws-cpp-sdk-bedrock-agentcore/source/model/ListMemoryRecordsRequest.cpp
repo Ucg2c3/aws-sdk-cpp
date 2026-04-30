@@ -35,5 +35,13 @@ Aws::String ListMemoryRecordsRequest::SerializePayload() const {
     payload.WithString("nextToken", m_nextToken);
   }
 
+  if (m_metadataFiltersHasBeenSet) {
+    Aws::Utils::Array<JsonValue> metadataFiltersJsonList(m_metadataFilters.size());
+    for (unsigned metadataFiltersIndex = 0; metadataFiltersIndex < metadataFiltersJsonList.GetLength(); ++metadataFiltersIndex) {
+      metadataFiltersJsonList[metadataFiltersIndex].AsObject(m_metadataFilters[metadataFiltersIndex].Jsonize());
+    }
+    payload.WithArray("metadataFilters", std::move(metadataFiltersJsonList));
+  }
+
   return payload.View().WriteReadable();
 }

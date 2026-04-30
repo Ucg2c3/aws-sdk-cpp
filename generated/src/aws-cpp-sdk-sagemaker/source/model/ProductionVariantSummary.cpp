@@ -45,6 +45,13 @@ ProductionVariantSummary& ProductionVariantSummary::operator=(JsonView jsonValue
     m_desiredInstanceCount = jsonValue.GetInteger("DesiredInstanceCount");
     m_desiredInstanceCountHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("InstancePools")) {
+    Aws::Utils::Array<JsonView> instancePoolsJsonList = jsonValue.GetArray("InstancePools");
+    for (unsigned instancePoolsIndex = 0; instancePoolsIndex < instancePoolsJsonList.GetLength(); ++instancePoolsIndex) {
+      m_instancePools.push_back(instancePoolsJsonList[instancePoolsIndex].AsObject());
+    }
+    m_instancePoolsHasBeenSet = true;
+  }
   if (jsonValue.ValueExists("VariantStatus")) {
     Aws::Utils::Array<JsonView> variantStatusJsonList = jsonValue.GetArray("VariantStatus");
     for (unsigned variantStatusIndex = 0; variantStatusIndex < variantStatusJsonList.GetLength(); ++variantStatusIndex) {
@@ -104,6 +111,14 @@ JsonValue ProductionVariantSummary::Jsonize() const {
 
   if (m_desiredInstanceCountHasBeenSet) {
     payload.WithInteger("DesiredInstanceCount", m_desiredInstanceCount);
+  }
+
+  if (m_instancePoolsHasBeenSet) {
+    Aws::Utils::Array<JsonValue> instancePoolsJsonList(m_instancePools.size());
+    for (unsigned instancePoolsIndex = 0; instancePoolsIndex < instancePoolsJsonList.GetLength(); ++instancePoolsIndex) {
+      instancePoolsJsonList[instancePoolsIndex].AsObject(m_instancePools[instancePoolsIndex].Jsonize());
+    }
+    payload.WithArray("InstancePools", std::move(instancePoolsJsonList));
   }
 
   if (m_variantStatusHasBeenSet) {

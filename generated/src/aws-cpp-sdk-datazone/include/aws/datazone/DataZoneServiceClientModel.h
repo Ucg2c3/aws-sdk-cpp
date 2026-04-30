@@ -107,6 +107,7 @@
 #include <aws/datazone/model/GetLineageNodeResult.h>
 #include <aws/datazone/model/GetListingResult.h>
 #include <aws/datazone/model/GetMetadataGenerationRunResult.h>
+#include <aws/datazone/model/GetNotebookRunResult.h>
 #include <aws/datazone/model/GetProjectProfileResult.h>
 #include <aws/datazone/model/GetProjectResult.h>
 #include <aws/datazone/model/GetRuleResult.h>
@@ -138,6 +139,7 @@
 #include <aws/datazone/model/ListLineageEventsResult.h>
 #include <aws/datazone/model/ListLineageNodeHistoryResult.h>
 #include <aws/datazone/model/ListMetadataGenerationRunsResult.h>
+#include <aws/datazone/model/ListNotebookRunsResult.h>
 #include <aws/datazone/model/ListNotificationsResult.h>
 #include <aws/datazone/model/ListPolicyGrantsResult.h>
 #include <aws/datazone/model/ListProjectMembershipsResult.h>
@@ -167,6 +169,8 @@
 #include <aws/datazone/model/SearchUserProfilesResult.h>
 #include <aws/datazone/model/StartDataSourceRunResult.h>
 #include <aws/datazone/model/StartMetadataGenerationRunResult.h>
+#include <aws/datazone/model/StartNotebookRunResult.h>
+#include <aws/datazone/model/StopNotebookRunResult.h>
 #include <aws/datazone/model/TagResourceResult.h>
 #include <aws/datazone/model/UntagResourceResult.h>
 #include <aws/datazone/model/UpdateAccountPoolResult.h>
@@ -317,6 +321,7 @@ class GetLineageEventRequest;
 class GetLineageNodeRequest;
 class GetListingRequest;
 class GetMetadataGenerationRunRequest;
+class GetNotebookRunRequest;
 class GetProjectRequest;
 class GetProjectProfileRequest;
 class GetRuleRequest;
@@ -347,6 +352,7 @@ class ListJobRunsRequest;
 class ListLineageEventsRequest;
 class ListLineageNodeHistoryRequest;
 class ListMetadataGenerationRunsRequest;
+class ListNotebookRunsRequest;
 class ListNotificationsRequest;
 class ListPolicyGrantsRequest;
 class ListProjectMembershipsRequest;
@@ -376,6 +382,8 @@ class SearchTypesRequest;
 class SearchUserProfilesRequest;
 class StartDataSourceRunRequest;
 class StartMetadataGenerationRunRequest;
+class StartNotebookRunRequest;
+class StopNotebookRunRequest;
 class TagResourceRequest;
 class UntagResourceRequest;
 class UpdateAccountPoolRequest;
@@ -496,6 +504,7 @@ typedef Aws::Utils::Outcome<GetLineageEventResult, DataZoneError> GetLineageEven
 typedef Aws::Utils::Outcome<GetLineageNodeResult, DataZoneError> GetLineageNodeOutcome;
 typedef Aws::Utils::Outcome<GetListingResult, DataZoneError> GetListingOutcome;
 typedef Aws::Utils::Outcome<GetMetadataGenerationRunResult, DataZoneError> GetMetadataGenerationRunOutcome;
+typedef Aws::Utils::Outcome<GetNotebookRunResult, DataZoneError> GetNotebookRunOutcome;
 typedef Aws::Utils::Outcome<GetProjectResult, DataZoneError> GetProjectOutcome;
 typedef Aws::Utils::Outcome<GetProjectProfileResult, DataZoneError> GetProjectProfileOutcome;
 typedef Aws::Utils::Outcome<GetRuleResult, DataZoneError> GetRuleOutcome;
@@ -526,6 +535,7 @@ typedef Aws::Utils::Outcome<ListJobRunsResult, DataZoneError> ListJobRunsOutcome
 typedef Aws::Utils::Outcome<ListLineageEventsResult, DataZoneError> ListLineageEventsOutcome;
 typedef Aws::Utils::Outcome<ListLineageNodeHistoryResult, DataZoneError> ListLineageNodeHistoryOutcome;
 typedef Aws::Utils::Outcome<ListMetadataGenerationRunsResult, DataZoneError> ListMetadataGenerationRunsOutcome;
+typedef Aws::Utils::Outcome<ListNotebookRunsResult, DataZoneError> ListNotebookRunsOutcome;
 typedef Aws::Utils::Outcome<ListNotificationsResult, DataZoneError> ListNotificationsOutcome;
 typedef Aws::Utils::Outcome<ListPolicyGrantsResult, DataZoneError> ListPolicyGrantsOutcome;
 typedef Aws::Utils::Outcome<ListProjectMembershipsResult, DataZoneError> ListProjectMembershipsOutcome;
@@ -555,6 +565,8 @@ typedef Aws::Utils::Outcome<SearchTypesResult, DataZoneError> SearchTypesOutcome
 typedef Aws::Utils::Outcome<SearchUserProfilesResult, DataZoneError> SearchUserProfilesOutcome;
 typedef Aws::Utils::Outcome<StartDataSourceRunResult, DataZoneError> StartDataSourceRunOutcome;
 typedef Aws::Utils::Outcome<StartMetadataGenerationRunResult, DataZoneError> StartMetadataGenerationRunOutcome;
+typedef Aws::Utils::Outcome<StartNotebookRunResult, DataZoneError> StartNotebookRunOutcome;
+typedef Aws::Utils::Outcome<StopNotebookRunResult, DataZoneError> StopNotebookRunOutcome;
 typedef Aws::Utils::Outcome<TagResourceResult, DataZoneError> TagResourceOutcome;
 typedef Aws::Utils::Outcome<UntagResourceResult, DataZoneError> UntagResourceOutcome;
 typedef Aws::Utils::Outcome<UpdateAccountPoolResult, DataZoneError> UpdateAccountPoolOutcome;
@@ -675,6 +687,7 @@ typedef std::future<GetLineageEventOutcome> GetLineageEventOutcomeCallable;
 typedef std::future<GetLineageNodeOutcome> GetLineageNodeOutcomeCallable;
 typedef std::future<GetListingOutcome> GetListingOutcomeCallable;
 typedef std::future<GetMetadataGenerationRunOutcome> GetMetadataGenerationRunOutcomeCallable;
+typedef std::future<GetNotebookRunOutcome> GetNotebookRunOutcomeCallable;
 typedef std::future<GetProjectOutcome> GetProjectOutcomeCallable;
 typedef std::future<GetProjectProfileOutcome> GetProjectProfileOutcomeCallable;
 typedef std::future<GetRuleOutcome> GetRuleOutcomeCallable;
@@ -705,6 +718,7 @@ typedef std::future<ListJobRunsOutcome> ListJobRunsOutcomeCallable;
 typedef std::future<ListLineageEventsOutcome> ListLineageEventsOutcomeCallable;
 typedef std::future<ListLineageNodeHistoryOutcome> ListLineageNodeHistoryOutcomeCallable;
 typedef std::future<ListMetadataGenerationRunsOutcome> ListMetadataGenerationRunsOutcomeCallable;
+typedef std::future<ListNotebookRunsOutcome> ListNotebookRunsOutcomeCallable;
 typedef std::future<ListNotificationsOutcome> ListNotificationsOutcomeCallable;
 typedef std::future<ListPolicyGrantsOutcome> ListPolicyGrantsOutcomeCallable;
 typedef std::future<ListProjectMembershipsOutcome> ListProjectMembershipsOutcomeCallable;
@@ -734,6 +748,8 @@ typedef std::future<SearchTypesOutcome> SearchTypesOutcomeCallable;
 typedef std::future<SearchUserProfilesOutcome> SearchUserProfilesOutcomeCallable;
 typedef std::future<StartDataSourceRunOutcome> StartDataSourceRunOutcomeCallable;
 typedef std::future<StartMetadataGenerationRunOutcome> StartMetadataGenerationRunOutcomeCallable;
+typedef std::future<StartNotebookRunOutcome> StartNotebookRunOutcomeCallable;
+typedef std::future<StopNotebookRunOutcome> StopNotebookRunOutcomeCallable;
 typedef std::future<TagResourceOutcome> TagResourceOutcomeCallable;
 typedef std::future<UntagResourceOutcome> UntagResourceOutcomeCallable;
 typedef std::future<UpdateAccountPoolOutcome> UpdateAccountPoolOutcomeCallable;
@@ -1048,6 +1064,9 @@ typedef std::function<void(const DataZoneClient*, const Model::GetListingRequest
 typedef std::function<void(const DataZoneClient*, const Model::GetMetadataGenerationRunRequest&,
                            const Model::GetMetadataGenerationRunOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&)>
     GetMetadataGenerationRunResponseReceivedHandler;
+typedef std::function<void(const DataZoneClient*, const Model::GetNotebookRunRequest&, const Model::GetNotebookRunOutcome&,
+                           const std::shared_ptr<const Aws::Client::AsyncCallerContext>&)>
+    GetNotebookRunResponseReceivedHandler;
 typedef std::function<void(const DataZoneClient*, const Model::GetProjectRequest&, const Model::GetProjectOutcome&,
                            const std::shared_ptr<const Aws::Client::AsyncCallerContext>&)>
     GetProjectResponseReceivedHandler;
@@ -1140,6 +1159,9 @@ typedef std::function<void(const DataZoneClient*, const Model::ListLineageNodeHi
 typedef std::function<void(const DataZoneClient*, const Model::ListMetadataGenerationRunsRequest&,
                            const Model::ListMetadataGenerationRunsOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&)>
     ListMetadataGenerationRunsResponseReceivedHandler;
+typedef std::function<void(const DataZoneClient*, const Model::ListNotebookRunsRequest&, const Model::ListNotebookRunsOutcome&,
+                           const std::shared_ptr<const Aws::Client::AsyncCallerContext>&)>
+    ListNotebookRunsResponseReceivedHandler;
 typedef std::function<void(const DataZoneClient*, const Model::ListNotificationsRequest&, const Model::ListNotificationsOutcome&,
                            const std::shared_ptr<const Aws::Client::AsyncCallerContext>&)>
     ListNotificationsResponseReceivedHandler;
@@ -1228,6 +1250,12 @@ typedef std::function<void(const DataZoneClient*, const Model::StartDataSourceRu
 typedef std::function<void(const DataZoneClient*, const Model::StartMetadataGenerationRunRequest&,
                            const Model::StartMetadataGenerationRunOutcome&, const std::shared_ptr<const Aws::Client::AsyncCallerContext>&)>
     StartMetadataGenerationRunResponseReceivedHandler;
+typedef std::function<void(const DataZoneClient*, const Model::StartNotebookRunRequest&, const Model::StartNotebookRunOutcome&,
+                           const std::shared_ptr<const Aws::Client::AsyncCallerContext>&)>
+    StartNotebookRunResponseReceivedHandler;
+typedef std::function<void(const DataZoneClient*, const Model::StopNotebookRunRequest&, const Model::StopNotebookRunOutcome&,
+                           const std::shared_ptr<const Aws::Client::AsyncCallerContext>&)>
+    StopNotebookRunResponseReceivedHandler;
 typedef std::function<void(const DataZoneClient*, const Model::TagResourceRequest&, const Model::TagResourceOutcome&,
                            const std::shared_ptr<const Aws::Client::AsyncCallerContext>&)>
     TagResourceResponseReceivedHandler;

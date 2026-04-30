@@ -38,6 +38,10 @@ Application& Application::operator=(JsonView jsonValue) {
     m_instanceArn = jsonValue.GetString("InstanceArn");
     m_instanceArnHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("IdentityStoreArn")) {
+    m_identityStoreArn = jsonValue.GetString("IdentityStoreArn");
+    m_identityStoreArnHasBeenSet = true;
+  }
   if (jsonValue.ValueExists("Status")) {
     m_status = ApplicationStatusMapper::GetApplicationStatusForName(jsonValue.GetString("Status"));
     m_statusHasBeenSet = true;
@@ -82,6 +86,10 @@ JsonValue Application::Jsonize() const {
 
   if (m_instanceArnHasBeenSet) {
     payload.WithString("InstanceArn", m_instanceArn);
+  }
+
+  if (m_identityStoreArnHasBeenSet) {
+    payload.WithString("IdentityStoreArn", m_identityStoreArn);
   }
 
   if (m_statusHasBeenSet) {

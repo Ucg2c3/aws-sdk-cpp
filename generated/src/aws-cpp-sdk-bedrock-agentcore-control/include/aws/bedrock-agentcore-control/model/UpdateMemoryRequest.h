@@ -6,10 +6,12 @@
 #pragma once
 #include <aws/bedrock-agentcore-control/BedrockAgentCoreControlRequest.h>
 #include <aws/bedrock-agentcore-control/BedrockAgentCoreControl_EXPORTS.h>
+#include <aws/bedrock-agentcore-control/model/IndexedKey.h>
 #include <aws/bedrock-agentcore-control/model/ModifyMemoryStrategies.h>
 #include <aws/bedrock-agentcore-control/model/StreamDeliveryResources.h>
 #include <aws/core/utils/UUID.h>
 #include <aws/core/utils/memory/stl/AWSString.h>
+#include <aws/core/utils/memory/stl/AWSVector.h>
 
 #include <utility>
 
@@ -143,6 +145,31 @@ class UpdateMemoryRequest : public BedrockAgentCoreControlRequest {
 
   ///@{
   /**
+   * <p>Additional metadata keys to index. Previously indexed keys cannot be
+   * removed.</p>
+   */
+  inline const Aws::Vector<IndexedKey>& GetAddIndexedKeys() const { return m_addIndexedKeys; }
+  inline bool AddIndexedKeysHasBeenSet() const { return m_addIndexedKeysHasBeenSet; }
+  template <typename AddIndexedKeysT = Aws::Vector<IndexedKey>>
+  void SetAddIndexedKeys(AddIndexedKeysT&& value) {
+    m_addIndexedKeysHasBeenSet = true;
+    m_addIndexedKeys = std::forward<AddIndexedKeysT>(value);
+  }
+  template <typename AddIndexedKeysT = Aws::Vector<IndexedKey>>
+  UpdateMemoryRequest& WithAddIndexedKeys(AddIndexedKeysT&& value) {
+    SetAddIndexedKeys(std::forward<AddIndexedKeysT>(value));
+    return *this;
+  }
+  template <typename AddIndexedKeysT = IndexedKey>
+  UpdateMemoryRequest& AddAddIndexedKeys(AddIndexedKeysT&& value) {
+    m_addIndexedKeysHasBeenSet = true;
+    m_addIndexedKeys.emplace_back(std::forward<AddIndexedKeysT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
    * <p>Configuration for streaming memory record data to external resources.</p>
    */
   inline const StreamDeliveryResources& GetStreamDeliveryResources() const { return m_streamDeliveryResources; }
@@ -171,6 +198,8 @@ class UpdateMemoryRequest : public BedrockAgentCoreControlRequest {
 
   ModifyMemoryStrategies m_memoryStrategies;
 
+  Aws::Vector<IndexedKey> m_addIndexedKeys;
+
   StreamDeliveryResources m_streamDeliveryResources;
   bool m_clientTokenHasBeenSet = true;
   bool m_memoryIdHasBeenSet = false;
@@ -178,6 +207,7 @@ class UpdateMemoryRequest : public BedrockAgentCoreControlRequest {
   bool m_eventExpiryDurationHasBeenSet = false;
   bool m_memoryExecutionRoleArnHasBeenSet = false;
   bool m_memoryStrategiesHasBeenSet = false;
+  bool m_addIndexedKeysHasBeenSet = false;
   bool m_streamDeliveryResourcesHasBeenSet = false;
 };
 

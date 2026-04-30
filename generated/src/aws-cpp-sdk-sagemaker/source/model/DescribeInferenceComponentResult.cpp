@@ -50,6 +50,13 @@ DescribeInferenceComponentResult& DescribeInferenceComponentResult::operator=(co
     m_specification = jsonValue.GetObject("Specification");
     m_specificationHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("Specifications")) {
+    Aws::Utils::Array<JsonView> specificationsJsonList = jsonValue.GetArray("Specifications");
+    for (unsigned specificationsIndex = 0; specificationsIndex < specificationsJsonList.GetLength(); ++specificationsIndex) {
+      m_specifications.push_back(specificationsJsonList[specificationsIndex].AsObject());
+    }
+    m_specificationsHasBeenSet = true;
+  }
   if (jsonValue.ValueExists("RuntimeConfig")) {
     m_runtimeConfig = jsonValue.GetObject("RuntimeConfig");
     m_runtimeConfigHasBeenSet = true;

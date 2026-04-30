@@ -86,9 +86,11 @@
 #include <aws/datazone/model/CancelMetadataGenerationRunResult.h>
 #include <aws/datazone/model/CancelSubscriptionRequest.h>
 #include <aws/datazone/model/CancelSubscriptionResult.h>
+#include <aws/datazone/model/CellInformation.h>
 #include <aws/datazone/model/ChangeAction.h>
 #include <aws/datazone/model/CloudFormationProperties.h>
 #include <aws/datazone/model/ColumnFilterConfiguration.h>
+#include <aws/datazone/model/ComputeConfig.h>
 #include <aws/datazone/model/ComputeEnvironments.h>
 #include <aws/datazone/model/ConfigurableActionParameter.h>
 #include <aws/datazone/model/ConfigurableActionTypeAuthorization.h>
@@ -267,6 +269,7 @@
 #include <aws/datazone/model/EnvironmentActionSummary.h>
 #include <aws/datazone/model/EnvironmentBlueprintConfigurationItem.h>
 #include <aws/datazone/model/EnvironmentBlueprintSummary.h>
+#include <aws/datazone/model/EnvironmentConfig.h>
 #include <aws/datazone/model/EnvironmentConfiguration.h>
 #include <aws/datazone/model/EnvironmentConfigurationParameter.h>
 #include <aws/datazone/model/EnvironmentConfigurationParametersDetails.h>
@@ -347,6 +350,8 @@
 #include <aws/datazone/model/GetListingResult.h>
 #include <aws/datazone/model/GetMetadataGenerationRunRequest.h>
 #include <aws/datazone/model/GetMetadataGenerationRunResult.h>
+#include <aws/datazone/model/GetNotebookRunRequest.h>
+#include <aws/datazone/model/GetNotebookRunResult.h>
 #include <aws/datazone/model/GetProjectProfileRequest.h>
 #include <aws/datazone/model/GetProjectProfileResult.h>
 #include <aws/datazone/model/GetProjectRequest.h>
@@ -474,6 +479,8 @@
 #include <aws/datazone/model/ListLineageNodeHistoryResult.h>
 #include <aws/datazone/model/ListMetadataGenerationRunsRequest.h>
 #include <aws/datazone/model/ListMetadataGenerationRunsResult.h>
+#include <aws/datazone/model/ListNotebookRunsRequest.h>
+#include <aws/datazone/model/ListNotebookRunsResult.h>
 #include <aws/datazone/model/ListNotificationsRequest.h>
 #include <aws/datazone/model/ListNotificationsResult.h>
 #include <aws/datazone/model/ListPolicyGrantsRequest.h>
@@ -525,9 +532,14 @@
 #include <aws/datazone/model/MlflowPropertiesPatch.h>
 #include <aws/datazone/model/Model.h>
 #include <aws/datazone/model/NameIdentifier.h>
+#include <aws/datazone/model/NetworkAccessType.h>
+#include <aws/datazone/model/NetworkConfig.h>
 #include <aws/datazone/model/NotEqualToExpression.h>
 #include <aws/datazone/model/NotInExpression.h>
 #include <aws/datazone/model/NotLikeExpression.h>
+#include <aws/datazone/model/NotebookRunError.h>
+#include <aws/datazone/model/NotebookRunStatus.h>
+#include <aws/datazone/model/NotebookRunSummary.h>
 #include <aws/datazone/model/NotificationOutput.h>
 #include <aws/datazone/model/NotificationResource.h>
 #include <aws/datazone/model/NotificationResourceType.h>
@@ -547,6 +559,8 @@
 #include <aws/datazone/model/OwnerPropertiesOutput.h>
 #include <aws/datazone/model/OwnerUserProperties.h>
 #include <aws/datazone/model/OwnerUserPropertiesOutput.h>
+#include <aws/datazone/model/PackageConfig.h>
+#include <aws/datazone/model/PackageManager.h>
 #include <aws/datazone/model/Permissions.h>
 #include <aws/datazone/model/PhysicalConnectionRequirements.h>
 #include <aws/datazone/model/PhysicalEndpoint.h>
@@ -671,7 +685,12 @@
 #include <aws/datazone/model/StartDataSourceRunResult.h>
 #include <aws/datazone/model/StartMetadataGenerationRunRequest.h>
 #include <aws/datazone/model/StartMetadataGenerationRunResult.h>
+#include <aws/datazone/model/StartNotebookRunRequest.h>
+#include <aws/datazone/model/StartNotebookRunResult.h>
 #include <aws/datazone/model/Status.h>
+#include <aws/datazone/model/StopNotebookRunRequest.h>
+#include <aws/datazone/model/StopNotebookRunResult.h>
+#include <aws/datazone/model/StorageConfig.h>
 #include <aws/datazone/model/SubscribedAsset.h>
 #include <aws/datazone/model/SubscribedAssetListing.h>
 #include <aws/datazone/model/SubscribedGroup.h>
@@ -708,8 +727,11 @@
 #include <aws/datazone/model/TimeSeriesDataPointFormOutput.h>
 #include <aws/datazone/model/TimeSeriesDataPointSummaryFormOutput.h>
 #include <aws/datazone/model/TimeSeriesEntityType.h>
+#include <aws/datazone/model/TimeoutConfig.h>
 #include <aws/datazone/model/Timezone.h>
 #include <aws/datazone/model/Topic.h>
+#include <aws/datazone/model/TriggerSource.h>
+#include <aws/datazone/model/TriggerSourceType.h>
 #include <aws/datazone/model/TypesSearchScope.h>
 #include <aws/datazone/model/Unit.h>
 #include <aws/datazone/model/UntagResourceRequest.h>

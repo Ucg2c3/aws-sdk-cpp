@@ -53,6 +53,7 @@ static const int KubernetesNetworkConfig_HASH = HashingUtils::HashString("Kubern
 static const int RemoteNetworkConfig_HASH = HashingUtils::HashString("RemoteNetworkConfig");
 static const int DeletionProtection_HASH = HashingUtils::HashString("DeletionProtection");
 static const int NodeRepairConfig_HASH = HashingUtils::HashString("NodeRepairConfig");
+static const int VendedLogs_HASH = HashingUtils::HashString("VendedLogs");
 static const int UpdatedTier_HASH = HashingUtils::HashString("UpdatedTier");
 static const int PreviousTier_HASH = HashingUtils::HashString("PreviousTier");
 static const int WarmPoolEnabled_HASH = HashingUtils::HashString("WarmPoolEnabled");
@@ -139,6 +140,8 @@ UpdateParamType GetUpdateParamTypeForName(const Aws::String& name) {
     return UpdateParamType::DeletionProtection;
   } else if (hashCode == NodeRepairConfig_HASH) {
     return UpdateParamType::NodeRepairConfig;
+  } else if (hashCode == VendedLogs_HASH) {
+    return UpdateParamType::VendedLogs;
   } else if (hashCode == UpdatedTier_HASH) {
     return UpdateParamType::UpdatedTier;
   } else if (hashCode == PreviousTier_HASH) {
@@ -243,6 +246,8 @@ Aws::String GetNameForUpdateParamType(UpdateParamType enumValue) {
       return "DeletionProtection";
     case UpdateParamType::NodeRepairConfig:
       return "NodeRepairConfig";
+    case UpdateParamType::VendedLogs:
+      return "VendedLogs";
     case UpdateParamType::UpdatedTier:
       return "UpdatedTier";
     case UpdateParamType::PreviousTier:

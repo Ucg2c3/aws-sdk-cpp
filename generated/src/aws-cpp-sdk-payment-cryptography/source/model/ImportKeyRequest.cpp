@@ -44,6 +44,10 @@ Aws::String ImportKeyRequest::SerializePayload() const {
     payload.WithArray("ReplicationRegions", std::move(replicationRegionsJsonList));
   }
 
+  if (m_requesterCommentHasBeenSet) {
+    payload.WithString("RequesterComment", m_requesterComment);
+  }
+
   return payload.View().WriteReadable();
 }
 

@@ -59,5 +59,21 @@ Aws::String GetResourceOauth2TokenRequest::SerializePayload() const {
     payload.WithString("customState", m_customState);
   }
 
+  if (m_resourcesHasBeenSet) {
+    Aws::Utils::Array<JsonValue> resourcesJsonList(m_resources.size());
+    for (unsigned resourcesIndex = 0; resourcesIndex < resourcesJsonList.GetLength(); ++resourcesIndex) {
+      resourcesJsonList[resourcesIndex].AsString(m_resources[resourcesIndex]);
+    }
+    payload.WithArray("resources", std::move(resourcesJsonList));
+  }
+
+  if (m_audiencesHasBeenSet) {
+    Aws::Utils::Array<JsonValue> audiencesJsonList(m_audiences.size());
+    for (unsigned audiencesIndex = 0; audiencesIndex < audiencesJsonList.GetLength(); ++audiencesIndex) {
+      audiencesJsonList[audiencesIndex].AsString(m_audiences[audiencesIndex]);
+    }
+    payload.WithArray("audiences", std::move(audiencesJsonList));
+  }
+
   return payload.View().WriteReadable();
 }

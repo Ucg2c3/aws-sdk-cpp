@@ -10,6 +10,7 @@
 #include <aws/observabilityadmin/model/DestinationType.h>
 #include <aws/observabilityadmin/model/ELBLoadBalancerLoggingParameters.h>
 #include <aws/observabilityadmin/model/LogDeliveryParameters.h>
+#include <aws/observabilityadmin/model/MskMonitoringParameters.h>
 #include <aws/observabilityadmin/model/VPCFlowLogParameters.h>
 #include <aws/observabilityadmin/model/WAFLoggingParameters.h>
 
@@ -184,6 +185,25 @@ class TelemetryDestinationConfiguration {
     return *this;
   }
   ///@}
+
+  ///@{
+  /**
+   * <p> Configuration parameters specific to MSK monitoring when MSK is the resource
+   * type. </p>
+   */
+  inline const MskMonitoringParameters& GetMskMonitoringParameters() const { return m_mskMonitoringParameters; }
+  inline bool MskMonitoringParametersHasBeenSet() const { return m_mskMonitoringParametersHasBeenSet; }
+  template <typename MskMonitoringParametersT = MskMonitoringParameters>
+  void SetMskMonitoringParameters(MskMonitoringParametersT&& value) {
+    m_mskMonitoringParametersHasBeenSet = true;
+    m_mskMonitoringParameters = std::forward<MskMonitoringParametersT>(value);
+  }
+  template <typename MskMonitoringParametersT = MskMonitoringParameters>
+  TelemetryDestinationConfiguration& WithMskMonitoringParameters(MskMonitoringParametersT&& value) {
+    SetMskMonitoringParameters(std::forward<MskMonitoringParametersT>(value));
+    return *this;
+  }
+  ///@}
  private:
   DestinationType m_destinationType{DestinationType::NOT_SET};
 
@@ -200,6 +220,8 @@ class TelemetryDestinationConfiguration {
   WAFLoggingParameters m_wAFLoggingParameters;
 
   LogDeliveryParameters m_logDeliveryParameters;
+
+  MskMonitoringParameters m_mskMonitoringParameters;
   bool m_destinationTypeHasBeenSet = false;
   bool m_destinationPatternHasBeenSet = false;
   bool m_retentionInDaysHasBeenSet = false;
@@ -208,6 +230,7 @@ class TelemetryDestinationConfiguration {
   bool m_eLBLoadBalancerLoggingParametersHasBeenSet = false;
   bool m_wAFLoggingParametersHasBeenSet = false;
   bool m_logDeliveryParametersHasBeenSet = false;
+  bool m_mskMonitoringParametersHasBeenSet = false;
 };
 
 }  // namespace Model

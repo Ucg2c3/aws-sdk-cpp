@@ -69,6 +69,13 @@ Memory& Memory::operator=(JsonView jsonValue) {
     }
     m_strategiesHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("indexedKeys")) {
+    Aws::Utils::Array<JsonView> indexedKeysJsonList = jsonValue.GetArray("indexedKeys");
+    for (unsigned indexedKeysIndex = 0; indexedKeysIndex < indexedKeysJsonList.GetLength(); ++indexedKeysIndex) {
+      m_indexedKeys.push_back(indexedKeysJsonList[indexedKeysIndex].AsObject());
+    }
+    m_indexedKeysHasBeenSet = true;
+  }
   if (jsonValue.ValueExists("streamDeliveryResources")) {
     m_streamDeliveryResources = jsonValue.GetObject("streamDeliveryResources");
     m_streamDeliveryResourcesHasBeenSet = true;
@@ -129,6 +136,14 @@ JsonValue Memory::Jsonize() const {
       strategiesJsonList[strategiesIndex].AsObject(m_strategies[strategiesIndex].Jsonize());
     }
     payload.WithArray("strategies", std::move(strategiesJsonList));
+  }
+
+  if (m_indexedKeysHasBeenSet) {
+    Aws::Utils::Array<JsonValue> indexedKeysJsonList(m_indexedKeys.size());
+    for (unsigned indexedKeysIndex = 0; indexedKeysIndex < indexedKeysJsonList.GetLength(); ++indexedKeysIndex) {
+      indexedKeysJsonList[indexedKeysIndex].AsObject(m_indexedKeys[indexedKeysIndex].Jsonize());
+    }
+    payload.WithArray("indexedKeys", std::move(indexedKeysJsonList));
   }
 
   if (m_streamDeliveryResourcesHasBeenSet) {

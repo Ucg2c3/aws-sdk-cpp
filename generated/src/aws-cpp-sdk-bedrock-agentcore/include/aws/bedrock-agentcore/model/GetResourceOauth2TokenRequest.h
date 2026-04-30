@@ -211,6 +211,56 @@ class GetResourceOauth2TokenRequest : public BedrockAgentCoreRequest {
     return *this;
   }
   ///@}
+
+  ///@{
+  /**
+   * <p>The resources to include in the token request. These are used to specify the
+   * target resources for which the OAuth2 token is being requested.</p>
+   */
+  inline const Aws::Vector<Aws::String>& GetResources() const { return m_resources; }
+  inline bool ResourcesHasBeenSet() const { return m_resourcesHasBeenSet; }
+  template <typename ResourcesT = Aws::Vector<Aws::String>>
+  void SetResources(ResourcesT&& value) {
+    m_resourcesHasBeenSet = true;
+    m_resources = std::forward<ResourcesT>(value);
+  }
+  template <typename ResourcesT = Aws::Vector<Aws::String>>
+  GetResourceOauth2TokenRequest& WithResources(ResourcesT&& value) {
+    SetResources(std::forward<ResourcesT>(value));
+    return *this;
+  }
+  template <typename ResourcesT = Aws::String>
+  GetResourceOauth2TokenRequest& AddResources(ResourcesT&& value) {
+    m_resourcesHasBeenSet = true;
+    m_resources.emplace_back(std::forward<ResourcesT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
+   * <p>The audiences to include in the token request. These are used to specify the
+   * intended recipients of the OAuth2 token.</p>
+   */
+  inline const Aws::Vector<Aws::String>& GetAudiences() const { return m_audiences; }
+  inline bool AudiencesHasBeenSet() const { return m_audiencesHasBeenSet; }
+  template <typename AudiencesT = Aws::Vector<Aws::String>>
+  void SetAudiences(AudiencesT&& value) {
+    m_audiencesHasBeenSet = true;
+    m_audiences = std::forward<AudiencesT>(value);
+  }
+  template <typename AudiencesT = Aws::Vector<Aws::String>>
+  GetResourceOauth2TokenRequest& WithAudiences(AudiencesT&& value) {
+    SetAudiences(std::forward<AudiencesT>(value));
+    return *this;
+  }
+  template <typename AudiencesT = Aws::String>
+  GetResourceOauth2TokenRequest& AddAudiences(AudiencesT&& value) {
+    m_audiencesHasBeenSet = true;
+    m_audiences.emplace_back(std::forward<AudiencesT>(value));
+    return *this;
+  }
+  ///@}
  private:
   Aws::String m_workloadIdentityToken;
 
@@ -229,6 +279,10 @@ class GetResourceOauth2TokenRequest : public BedrockAgentCoreRequest {
   Aws::Map<Aws::String, Aws::String> m_customParameters;
 
   Aws::String m_customState;
+
+  Aws::Vector<Aws::String> m_resources;
+
+  Aws::Vector<Aws::String> m_audiences;
   bool m_workloadIdentityTokenHasBeenSet = false;
   bool m_resourceCredentialProviderNameHasBeenSet = false;
   bool m_scopesHasBeenSet = false;
@@ -238,6 +292,8 @@ class GetResourceOauth2TokenRequest : public BedrockAgentCoreRequest {
   bool m_forceAuthenticationHasBeenSet = false;
   bool m_customParametersHasBeenSet = false;
   bool m_customStateHasBeenSet = false;
+  bool m_resourcesHasBeenSet = false;
+  bool m_audiencesHasBeenSet = false;
 };
 
 }  // namespace Model

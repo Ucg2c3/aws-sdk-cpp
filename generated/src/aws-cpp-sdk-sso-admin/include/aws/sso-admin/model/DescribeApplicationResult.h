@@ -121,6 +121,24 @@ class DescribeApplicationResult {
 
   ///@{
   /**
+   * <p>The ARN of the identity store that is connected to the instance of IAM
+   * Identity Center.</p>
+   */
+  inline const Aws::String& GetIdentityStoreArn() const { return m_identityStoreArn; }
+  template <typename IdentityStoreArnT = Aws::String>
+  void SetIdentityStoreArn(IdentityStoreArnT&& value) {
+    m_identityStoreArnHasBeenSet = true;
+    m_identityStoreArn = std::forward<IdentityStoreArnT>(value);
+  }
+  template <typename IdentityStoreArnT = Aws::String>
+  DescribeApplicationResult& WithIdentityStoreArn(IdentityStoreArnT&& value) {
+    SetIdentityStoreArn(std::forward<IdentityStoreArnT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
    * <p>Specifies whether the application is enabled or disabled.</p>
    */
   inline ApplicationStatus GetStatus() const { return m_status; }
@@ -231,6 +249,8 @@ class DescribeApplicationResult {
 
   Aws::String m_instanceArn;
 
+  Aws::String m_identityStoreArn;
+
   ApplicationStatus m_status{ApplicationStatus::NOT_SET};
 
   PortalOptions m_portalOptions;
@@ -248,6 +268,7 @@ class DescribeApplicationResult {
   bool m_nameHasBeenSet = false;
   bool m_applicationAccountHasBeenSet = false;
   bool m_instanceArnHasBeenSet = false;
+  bool m_identityStoreArnHasBeenSet = false;
   bool m_statusHasBeenSet = false;
   bool m_portalOptionsHasBeenSet = false;
   bool m_descriptionHasBeenSet = false;

@@ -45,6 +45,45 @@ class CreateApplicationResult {
   ///@}
 
   ///@{
+  /**
+   * <p>The ARN of the instance of IAM Identity Center under which the operation will
+   * run. For more information about ARNs, see <a
+   * href="/general/latest/gr/aws-arns-and-namespaces.html">Amazon Resource Names
+   * (ARNs) and Amazon Web Services Service Namespaces</a> in the <i>Amazon Web
+   * Services General Reference</i>.</p>
+   */
+  inline const Aws::String& GetInstanceArn() const { return m_instanceArn; }
+  template <typename InstanceArnT = Aws::String>
+  void SetInstanceArn(InstanceArnT&& value) {
+    m_instanceArnHasBeenSet = true;
+    m_instanceArn = std::forward<InstanceArnT>(value);
+  }
+  template <typename InstanceArnT = Aws::String>
+  CreateApplicationResult& WithInstanceArn(InstanceArnT&& value) {
+    SetInstanceArn(std::forward<InstanceArnT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
+   * <p>The ARN of the identity store that is connected to the instance of IAM
+   * Identity Center.</p>
+   */
+  inline const Aws::String& GetIdentityStoreArn() const { return m_identityStoreArn; }
+  template <typename IdentityStoreArnT = Aws::String>
+  void SetIdentityStoreArn(IdentityStoreArnT&& value) {
+    m_identityStoreArnHasBeenSet = true;
+    m_identityStoreArn = std::forward<IdentityStoreArnT>(value);
+  }
+  template <typename IdentityStoreArnT = Aws::String>
+  CreateApplicationResult& WithIdentityStoreArn(IdentityStoreArnT&& value) {
+    SetIdentityStoreArn(std::forward<IdentityStoreArnT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
 
   inline const Aws::String& GetRequestId() const { return m_requestId; }
   template <typename RequestIdT = Aws::String>
@@ -63,9 +102,15 @@ class CreateApplicationResult {
  private:
   Aws::String m_applicationArn;
 
+  Aws::String m_instanceArn;
+
+  Aws::String m_identityStoreArn;
+
   Aws::String m_requestId;
   Aws::Http::HttpResponseCode m_HttpResponseCode;
   bool m_applicationArnHasBeenSet = false;
+  bool m_instanceArnHasBeenSet = false;
+  bool m_identityStoreArnHasBeenSet = false;
   bool m_requestIdHasBeenSet = false;
 };
 

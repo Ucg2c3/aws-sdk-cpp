@@ -49,6 +49,13 @@ PendingProductionVariantSummary& PendingProductionVariantSummary::operator=(Json
     m_instanceType = ProductionVariantInstanceTypeMapper::GetProductionVariantInstanceTypeForName(jsonValue.GetString("InstanceType"));
     m_instanceTypeHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("InstancePools")) {
+    Aws::Utils::Array<JsonView> instancePoolsJsonList = jsonValue.GetArray("InstancePools");
+    for (unsigned instancePoolsIndex = 0; instancePoolsIndex < instancePoolsJsonList.GetLength(); ++instancePoolsIndex) {
+      m_instancePools.push_back(instancePoolsJsonList[instancePoolsIndex].AsObject());
+    }
+    m_instancePoolsHasBeenSet = true;
+  }
   if (jsonValue.ValueExists("AcceleratorType")) {
     m_acceleratorType =
         ProductionVariantAcceleratorTypeMapper::GetProductionVariantAcceleratorTypeForName(jsonValue.GetString("AcceleratorType"));
@@ -113,6 +120,14 @@ JsonValue PendingProductionVariantSummary::Jsonize() const {
 
   if (m_instanceTypeHasBeenSet) {
     payload.WithString("InstanceType", ProductionVariantInstanceTypeMapper::GetNameForProductionVariantInstanceType(m_instanceType));
+  }
+
+  if (m_instancePoolsHasBeenSet) {
+    Aws::Utils::Array<JsonValue> instancePoolsJsonList(m_instancePools.size());
+    for (unsigned instancePoolsIndex = 0; instancePoolsIndex < instancePoolsJsonList.GetLength(); ++instancePoolsIndex) {
+      instancePoolsJsonList[instancePoolsIndex].AsObject(m_instancePools[instancePoolsIndex].Jsonize());
+    }
+    payload.WithArray("InstancePools", std::move(instancePoolsJsonList));
   }
 
   if (m_acceleratorTypeHasBeenSet) {

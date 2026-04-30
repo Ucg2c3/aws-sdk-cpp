@@ -18,6 +18,10 @@ namespace Model {
 InferenceComponentSpecification::InferenceComponentSpecification(JsonView jsonValue) { *this = jsonValue; }
 
 InferenceComponentSpecification& InferenceComponentSpecification::operator=(JsonView jsonValue) {
+  if (jsonValue.ValueExists("InstanceType")) {
+    m_instanceType = ProductionVariantInstanceTypeMapper::GetProductionVariantInstanceTypeForName(jsonValue.GetString("InstanceType"));
+    m_instanceTypeHasBeenSet = true;
+  }
   if (jsonValue.ValueExists("ModelName")) {
     m_modelName = jsonValue.GetString("ModelName");
     m_modelNameHasBeenSet = true;
@@ -51,6 +55,10 @@ InferenceComponentSpecification& InferenceComponentSpecification::operator=(Json
 
 JsonValue InferenceComponentSpecification::Jsonize() const {
   JsonValue payload;
+
+  if (m_instanceTypeHasBeenSet) {
+    payload.WithString("InstanceType", ProductionVariantInstanceTypeMapper::GetNameForProductionVariantInstanceType(m_instanceType));
+  }
 
   if (m_modelNameHasBeenSet) {
     payload.WithString("ModelName", m_modelName);

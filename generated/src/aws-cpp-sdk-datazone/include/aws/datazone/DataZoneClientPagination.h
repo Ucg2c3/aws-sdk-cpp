@@ -27,6 +27,7 @@
 #include <aws/datazone/model/ListLineageEventsPaginationTraits.h>
 #include <aws/datazone/model/ListLineageNodeHistoryPaginationTraits.h>
 #include <aws/datazone/model/ListMetadataGenerationRunsPaginationTraits.h>
+#include <aws/datazone/model/ListNotebookRunsPaginationTraits.h>
 #include <aws/datazone/model/ListNotificationsPaginationTraits.h>
 #include <aws/datazone/model/ListPolicyGrantsPaginationTraits.h>
 #include <aws/datazone/model/ListProjectMembershipsPaginationTraits.h>
@@ -100,6 +101,8 @@ using ListLineageNodeHistoryPaginator =
 using ListMetadataGenerationRunsPaginator =
     Aws::Utils::Pagination::Paginator<DataZoneClient, Model::ListMetadataGenerationRunsRequest,
                                       Pagination::ListMetadataGenerationRunsPaginationTraits<DataZoneClient>>;
+using ListNotebookRunsPaginator = Aws::Utils::Pagination::Paginator<DataZoneClient, Model::ListNotebookRunsRequest,
+                                                                    Pagination::ListNotebookRunsPaginationTraits<DataZoneClient>>;
 using ListNotificationsPaginator = Aws::Utils::Pagination::Paginator<DataZoneClient, Model::ListNotificationsRequest,
                                                                      Pagination::ListNotificationsPaginationTraits<DataZoneClient>>;
 using ListPolicyGrantsPaginator = Aws::Utils::Pagination::Paginator<DataZoneClient, Model::ListPolicyGrantsRequest,

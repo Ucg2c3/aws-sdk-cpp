@@ -8,6 +8,7 @@
 #include <aws/core/utils/memory/stl/AWSVector.h>
 #include <aws/sagemaker/SageMaker_EXPORTS.h>
 #include <aws/sagemaker/model/DeployedImage.h>
+#include <aws/sagemaker/model/InstancePoolSummary.h>
 #include <aws/sagemaker/model/ProductionVariantAcceleratorType.h>
 #include <aws/sagemaker/model/ProductionVariantInstanceType.h>
 #include <aws/sagemaker/model/ProductionVariantManagedInstanceScaling.h>
@@ -179,6 +180,31 @@ class PendingProductionVariantSummary {
 
   ///@{
   /**
+   * <p>A list of instance pools for the production variant. Each pool indicates the
+   * instance type and the current number of instances of that type.</p>
+   */
+  inline const Aws::Vector<InstancePoolSummary>& GetInstancePools() const { return m_instancePools; }
+  inline bool InstancePoolsHasBeenSet() const { return m_instancePoolsHasBeenSet; }
+  template <typename InstancePoolsT = Aws::Vector<InstancePoolSummary>>
+  void SetInstancePools(InstancePoolsT&& value) {
+    m_instancePoolsHasBeenSet = true;
+    m_instancePools = std::forward<InstancePoolsT>(value);
+  }
+  template <typename InstancePoolsT = Aws::Vector<InstancePoolSummary>>
+  PendingProductionVariantSummary& WithInstancePools(InstancePoolsT&& value) {
+    SetInstancePools(std::forward<InstancePoolsT>(value));
+    return *this;
+  }
+  template <typename InstancePoolsT = InstancePoolSummary>
+  PendingProductionVariantSummary& AddInstancePools(InstancePoolsT&& value) {
+    m_instancePoolsHasBeenSet = true;
+    m_instancePools.emplace_back(std::forward<InstancePoolsT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
    * <p>This parameter is no longer supported. Elastic Inference (EI) is no longer
    * available.</p> <p>This parameter was used to specify the size of the EI instance
    * to use for the production variant.</p>
@@ -309,6 +335,8 @@ class PendingProductionVariantSummary {
 
   ProductionVariantInstanceType m_instanceType{ProductionVariantInstanceType::NOT_SET};
 
+  Aws::Vector<InstancePoolSummary> m_instancePools;
+
   ProductionVariantAcceleratorType m_acceleratorType{ProductionVariantAcceleratorType::NOT_SET};
 
   Aws::Vector<ProductionVariantStatus> m_variantStatus;
@@ -327,6 +355,7 @@ class PendingProductionVariantSummary {
   bool m_currentInstanceCountHasBeenSet = false;
   bool m_desiredInstanceCountHasBeenSet = false;
   bool m_instanceTypeHasBeenSet = false;
+  bool m_instancePoolsHasBeenSet = false;
   bool m_acceleratorTypeHasBeenSet = false;
   bool m_variantStatusHasBeenSet = false;
   bool m_currentServerlessConfigHasBeenSet = false;

@@ -17,6 +17,7 @@ namespace Oauth2FlowTypeMapper {
 
 static const int USER_FEDERATION_HASH = HashingUtils::HashString("USER_FEDERATION");
 static const int M2M_HASH = HashingUtils::HashString("M2M");
+static const int ON_BEHALF_OF_TOKEN_EXCHANGE_HASH = HashingUtils::HashString("ON_BEHALF_OF_TOKEN_EXCHANGE");
 
 Oauth2FlowType GetOauth2FlowTypeForName(const Aws::String& name) {
   int hashCode = HashingUtils::HashString(name.c_str());
@@ -24,6 +25,8 @@ Oauth2FlowType GetOauth2FlowTypeForName(const Aws::String& name) {
     return Oauth2FlowType::USER_FEDERATION;
   } else if (hashCode == M2M_HASH) {
     return Oauth2FlowType::M2M;
+  } else if (hashCode == ON_BEHALF_OF_TOKEN_EXCHANGE_HASH) {
+    return Oauth2FlowType::ON_BEHALF_OF_TOKEN_EXCHANGE;
   }
   EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
   if (overflowContainer) {
@@ -42,6 +45,8 @@ Aws::String GetNameForOauth2FlowType(Oauth2FlowType enumValue) {
       return "USER_FEDERATION";
     case Oauth2FlowType::M2M:
       return "M2M";
+    case Oauth2FlowType::ON_BEHALF_OF_TOKEN_EXCHANGE:
+      return "ON_BEHALF_OF_TOKEN_EXCHANGE";
     default:
       EnumParseOverflowContainer* overflowContainer = Aws::GetEnumOverflowContainer();
       if (overflowContainer) {

@@ -34,6 +34,10 @@ EpisodicOverrideReflectionConfigurationInput& EpisodicOverrideReflectionConfigur
     }
     m_namespaceTemplatesHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("memoryRecordSchema")) {
+    m_memoryRecordSchema = jsonValue.GetObject("memoryRecordSchema");
+    m_memoryRecordSchemaHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -55,6 +59,10 @@ JsonValue EpisodicOverrideReflectionConfigurationInput::Jsonize() const {
       namespaceTemplatesJsonList[namespaceTemplatesIndex].AsString(m_namespaceTemplates[namespaceTemplatesIndex]);
     }
     payload.WithArray("namespaceTemplates", std::move(namespaceTemplatesJsonList));
+  }
+
+  if (m_memoryRecordSchemaHasBeenSet) {
+    payload.WithObject("memoryRecordSchema", m_memoryRecordSchema.Jsonize());
   }
 
   return payload;

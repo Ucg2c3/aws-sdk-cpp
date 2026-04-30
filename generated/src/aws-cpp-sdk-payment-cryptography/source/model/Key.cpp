@@ -94,6 +94,10 @@ Key& Key::operator=(JsonView jsonValue) {
     m_usingDefaultReplicationRegions = jsonValue.GetBool("UsingDefaultReplicationRegions");
     m_usingDefaultReplicationRegionsHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("MpaStatus")) {
+    m_mpaStatus = jsonValue.GetObject("MpaStatus");
+    m_mpaStatusHasBeenSet = true;
+  }
   return *this;
 }
 
@@ -174,6 +178,10 @@ JsonValue Key::Jsonize() const {
 
   if (m_usingDefaultReplicationRegionsHasBeenSet) {
     payload.WithBool("UsingDefaultReplicationRegions", m_usingDefaultReplicationRegions);
+  }
+
+  if (m_mpaStatusHasBeenSet) {
+    payload.WithObject("MpaStatus", m_mpaStatus.Jsonize());
   }
 
   return payload;

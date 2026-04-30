@@ -149,6 +149,27 @@ class ImportKeyRequest : public PaymentCryptographyRequest {
     return *this;
   }
   ///@}
+
+  ///@{
+  /**
+   * <p>The comment from the requester explaining the reason for the import.</p>
+   *  <p>Don't include personal, confidential or sensitive information in
+   * this field. This field may be displayed in plaintext in CloudTrail logs and
+   * other output.</p>
+   */
+  inline const Aws::String& GetRequesterComment() const { return m_requesterComment; }
+  inline bool RequesterCommentHasBeenSet() const { return m_requesterCommentHasBeenSet; }
+  template <typename RequesterCommentT = Aws::String>
+  void SetRequesterComment(RequesterCommentT&& value) {
+    m_requesterCommentHasBeenSet = true;
+    m_requesterComment = std::forward<RequesterCommentT>(value);
+  }
+  template <typename RequesterCommentT = Aws::String>
+  ImportKeyRequest& WithRequesterComment(RequesterCommentT&& value) {
+    SetRequesterComment(std::forward<RequesterCommentT>(value));
+    return *this;
+  }
+  ///@}
  private:
   ImportKeyMaterial m_keyMaterial;
 
@@ -159,11 +180,14 @@ class ImportKeyRequest : public PaymentCryptographyRequest {
   Aws::Vector<Tag> m_tags;
 
   Aws::Vector<Aws::String> m_replicationRegions;
+
+  Aws::String m_requesterComment;
   bool m_keyMaterialHasBeenSet = false;
   bool m_keyCheckValueAlgorithmHasBeenSet = false;
   bool m_enabledHasBeenSet = false;
   bool m_tagsHasBeenSet = false;
   bool m_replicationRegionsHasBeenSet = false;
+  bool m_requesterCommentHasBeenSet = false;
 };
 
 }  // namespace Model

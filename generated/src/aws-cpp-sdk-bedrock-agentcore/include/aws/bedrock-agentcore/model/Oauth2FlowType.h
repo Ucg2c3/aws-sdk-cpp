@@ -10,7 +10,7 @@
 namespace Aws {
 namespace BedrockAgentCore {
 namespace Model {
-enum class Oauth2FlowType { NOT_SET, USER_FEDERATION, M2M };
+enum class Oauth2FlowType { NOT_SET, USER_FEDERATION, M2M, ON_BEHALF_OF_TOKEN_EXCHANGE };
 
 namespace Oauth2FlowTypeMapper {
 AWS_BEDROCKAGENTCORE_API Oauth2FlowType GetOauth2FlowTypeForName(const Aws::String& name);

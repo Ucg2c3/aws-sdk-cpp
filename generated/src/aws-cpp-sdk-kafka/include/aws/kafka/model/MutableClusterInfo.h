@@ -18,6 +18,7 @@
 #include <aws/kafka/model/OpenMonitoring.h>
 #include <aws/kafka/model/Rebalancing.h>
 #include <aws/kafka/model/StorageMode.h>
+#include <aws/kafka/model/ZookeeperAccess.h>
 
 #include <utility>
 
@@ -147,6 +148,26 @@ class MutableClusterInfo {
   template <typename OpenMonitoringT = OpenMonitoring>
   MutableClusterInfo& WithOpenMonitoring(OpenMonitoringT&& value) {
     SetOpenMonitoring(std::forward<OpenMonitoringT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
+   *
+          <p>Access control settings for zookeeper</p>
+
+   */
+  inline const ZookeeperAccess& GetZookeeperAccess() const { return m_zookeeperAccess; }
+  inline bool ZookeeperAccessHasBeenSet() const { return m_zookeeperAccessHasBeenSet; }
+  template <typename ZookeeperAccessT = ZookeeperAccess>
+  void SetZookeeperAccess(ZookeeperAccessT&& value) {
+    m_zookeeperAccessHasBeenSet = true;
+    m_zookeeperAccess = std::forward<ZookeeperAccessT>(value);
+  }
+  template <typename ZookeeperAccessT = ZookeeperAccess>
+  MutableClusterInfo& WithZookeeperAccess(ZookeeperAccessT&& value) {
+    SetZookeeperAccess(std::forward<ZookeeperAccessT>(value));
     return *this;
   }
   ///@}
@@ -344,6 +365,8 @@ class MutableClusterInfo {
 
   OpenMonitoring m_openMonitoring;
 
+  ZookeeperAccess m_zookeeperAccess;
+
   Aws::String m_kafkaVersion;
 
   LoggingInfo m_loggingInfo;
@@ -366,6 +389,7 @@ class MutableClusterInfo {
   bool m_numberOfBrokerNodesHasBeenSet = false;
   bool m_enhancedMonitoringHasBeenSet = false;
   bool m_openMonitoringHasBeenSet = false;
+  bool m_zookeeperAccessHasBeenSet = false;
   bool m_kafkaVersionHasBeenSet = false;
   bool m_loggingInfoHasBeenSet = false;
   bool m_instanceTypeHasBeenSet = false;

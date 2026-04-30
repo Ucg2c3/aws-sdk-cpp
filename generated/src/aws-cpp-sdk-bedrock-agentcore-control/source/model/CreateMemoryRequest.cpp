@@ -47,6 +47,14 @@ Aws::String CreateMemoryRequest::SerializePayload() const {
     payload.WithArray("memoryStrategies", std::move(memoryStrategiesJsonList));
   }
 
+  if (m_indexedKeysHasBeenSet) {
+    Aws::Utils::Array<JsonValue> indexedKeysJsonList(m_indexedKeys.size());
+    for (unsigned indexedKeysIndex = 0; indexedKeysIndex < indexedKeysJsonList.GetLength(); ++indexedKeysIndex) {
+      indexedKeysJsonList[indexedKeysIndex].AsObject(m_indexedKeys[indexedKeysIndex].Jsonize());
+    }
+    payload.WithArray("indexedKeys", std::move(indexedKeysJsonList));
+  }
+
   if (m_streamDeliveryResourcesHasBeenSet) {
     payload.WithObject("streamDeliveryResources", m_streamDeliveryResources.Jsonize());
   }

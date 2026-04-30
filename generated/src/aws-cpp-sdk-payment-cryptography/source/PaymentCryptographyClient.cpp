@@ -21,24 +21,30 @@
 #include <aws/payment-cryptography/PaymentCryptographyEndpointProvider.h>
 #include <aws/payment-cryptography/PaymentCryptographyErrorMarshaller.h>
 #include <aws/payment-cryptography/model/AddKeyReplicationRegionsRequest.h>
+#include <aws/payment-cryptography/model/AssociateMpaTeamRequest.h>
 #include <aws/payment-cryptography/model/CreateAliasRequest.h>
 #include <aws/payment-cryptography/model/CreateKeyRequest.h>
 #include <aws/payment-cryptography/model/DeleteAliasRequest.h>
 #include <aws/payment-cryptography/model/DeleteKeyRequest.h>
+#include <aws/payment-cryptography/model/DeleteResourcePolicyRequest.h>
 #include <aws/payment-cryptography/model/DisableDefaultKeyReplicationRegionsRequest.h>
+#include <aws/payment-cryptography/model/DisassociateMpaTeamRequest.h>
 #include <aws/payment-cryptography/model/EnableDefaultKeyReplicationRegionsRequest.h>
 #include <aws/payment-cryptography/model/ExportKeyRequest.h>
 #include <aws/payment-cryptography/model/GetAliasRequest.h>
 #include <aws/payment-cryptography/model/GetCertificateSigningRequestRequest.h>
 #include <aws/payment-cryptography/model/GetDefaultKeyReplicationRegionsRequest.h>
 #include <aws/payment-cryptography/model/GetKeyRequest.h>
+#include <aws/payment-cryptography/model/GetMpaTeamAssociationRequest.h>
 #include <aws/payment-cryptography/model/GetParametersForExportRequest.h>
 #include <aws/payment-cryptography/model/GetParametersForImportRequest.h>
 #include <aws/payment-cryptography/model/GetPublicKeyCertificateRequest.h>
+#include <aws/payment-cryptography/model/GetResourcePolicyRequest.h>
 #include <aws/payment-cryptography/model/ImportKeyRequest.h>
 #include <aws/payment-cryptography/model/ListAliasesRequest.h>
 #include <aws/payment-cryptography/model/ListKeysRequest.h>
 #include <aws/payment-cryptography/model/ListTagsForResourceRequest.h>
+#include <aws/payment-cryptography/model/PutResourcePolicyRequest.h>
 #include <aws/payment-cryptography/model/RemoveKeyReplicationRegionsRequest.h>
 #include <aws/payment-cryptography/model/RestoreKeyRequest.h>
 #include <aws/payment-cryptography/model/StartKeyUsageRequest.h>
@@ -208,6 +214,12 @@ AddKeyReplicationRegionsOutcome PaymentCryptographyClient::AddKeyReplicationRegi
                             : AddKeyReplicationRegionsOutcome(std::move(result.GetError()));
 }
 
+AssociateMpaTeamOutcome PaymentCryptographyClient::AssociateMpaTeam(const AssociateMpaTeamRequest& request) const {
+  auto result = InvokeServiceOperation(request, Aws::Http::HttpMethod::HTTP_POST);
+  return result.IsSuccess() ? AssociateMpaTeamOutcome(result.GetResultWithOwnership())
+                            : AssociateMpaTeamOutcome(std::move(result.GetError()));
+}
+
 CreateAliasOutcome PaymentCryptographyClient::CreateAlias(const CreateAliasRequest& request) const {
   auto result = InvokeServiceOperation(request, Aws::Http::HttpMethod::HTTP_POST);
   return result.IsSuccess() ? CreateAliasOutcome(result.GetResultWithOwnership()) : CreateAliasOutcome(std::move(result.GetError()));
@@ -228,11 +240,23 @@ DeleteKeyOutcome PaymentCryptographyClient::DeleteKey(const DeleteKeyRequest& re
   return result.IsSuccess() ? DeleteKeyOutcome(result.GetResultWithOwnership()) : DeleteKeyOutcome(std::move(result.GetError()));
 }
 
+DeleteResourcePolicyOutcome PaymentCryptographyClient::DeleteResourcePolicy(const DeleteResourcePolicyRequest& request) const {
+  auto result = InvokeServiceOperation(request, Aws::Http::HttpMethod::HTTP_POST);
+  return result.IsSuccess() ? DeleteResourcePolicyOutcome(result.GetResultWithOwnership())
+                            : DeleteResourcePolicyOutcome(std::move(result.GetError()));
+}
+
 DisableDefaultKeyReplicationRegionsOutcome PaymentCryptographyClient::DisableDefaultKeyReplicationRegions(
     const DisableDefaultKeyReplicationRegionsRequest& request) const {
   auto result = InvokeServiceOperation(request, Aws::Http::HttpMethod::HTTP_POST);
   return result.IsSuccess() ? DisableDefaultKeyReplicationRegionsOutcome(result.GetResultWithOwnership())
                             : DisableDefaultKeyReplicationRegionsOutcome(std::move(result.GetError()));
+}
+
+DisassociateMpaTeamOutcome PaymentCryptographyClient::DisassociateMpaTeam(const DisassociateMpaTeamRequest& request) const {
+  auto result = InvokeServiceOperation(request, Aws::Http::HttpMethod::HTTP_POST);
+  return result.IsSuccess() ? DisassociateMpaTeamOutcome(result.GetResultWithOwnership())
+                            : DisassociateMpaTeamOutcome(std::move(result.GetError()));
 }
 
 EnableDefaultKeyReplicationRegionsOutcome PaymentCryptographyClient::EnableDefaultKeyReplicationRegions(
@@ -271,6 +295,12 @@ GetKeyOutcome PaymentCryptographyClient::GetKey(const GetKeyRequest& request) co
   return result.IsSuccess() ? GetKeyOutcome(result.GetResultWithOwnership()) : GetKeyOutcome(std::move(result.GetError()));
 }
 
+GetMpaTeamAssociationOutcome PaymentCryptographyClient::GetMpaTeamAssociation(const GetMpaTeamAssociationRequest& request) const {
+  auto result = InvokeServiceOperation(request, Aws::Http::HttpMethod::HTTP_POST);
+  return result.IsSuccess() ? GetMpaTeamAssociationOutcome(result.GetResultWithOwnership())
+                            : GetMpaTeamAssociationOutcome(std::move(result.GetError()));
+}
+
 GetParametersForExportOutcome PaymentCryptographyClient::GetParametersForExport(const GetParametersForExportRequest& request) const {
   auto result = InvokeServiceOperation(request, Aws::Http::HttpMethod::HTTP_POST);
   return result.IsSuccess() ? GetParametersForExportOutcome(result.GetResultWithOwnership())
@@ -287,6 +317,12 @@ GetPublicKeyCertificateOutcome PaymentCryptographyClient::GetPublicKeyCertificat
   auto result = InvokeServiceOperation(request, Aws::Http::HttpMethod::HTTP_POST);
   return result.IsSuccess() ? GetPublicKeyCertificateOutcome(result.GetResultWithOwnership())
                             : GetPublicKeyCertificateOutcome(std::move(result.GetError()));
+}
+
+GetResourcePolicyOutcome PaymentCryptographyClient::GetResourcePolicy(const GetResourcePolicyRequest& request) const {
+  auto result = InvokeServiceOperation(request, Aws::Http::HttpMethod::HTTP_POST);
+  return result.IsSuccess() ? GetResourcePolicyOutcome(result.GetResultWithOwnership())
+                            : GetResourcePolicyOutcome(std::move(result.GetError()));
 }
 
 ImportKeyOutcome PaymentCryptographyClient::ImportKey(const ImportKeyRequest& request) const {
@@ -308,6 +344,12 @@ ListTagsForResourceOutcome PaymentCryptographyClient::ListTagsForResource(const 
   auto result = InvokeServiceOperation(request, Aws::Http::HttpMethod::HTTP_POST);
   return result.IsSuccess() ? ListTagsForResourceOutcome(result.GetResultWithOwnership())
                             : ListTagsForResourceOutcome(std::move(result.GetError()));
+}
+
+PutResourcePolicyOutcome PaymentCryptographyClient::PutResourcePolicy(const PutResourcePolicyRequest& request) const {
+  auto result = InvokeServiceOperation(request, Aws::Http::HttpMethod::HTTP_POST);
+  return result.IsSuccess() ? PutResourcePolicyOutcome(result.GetResultWithOwnership())
+                            : PutResourcePolicyOutcome(std::move(result.GetError()));
 }
 
 RemoveKeyReplicationRegionsOutcome PaymentCryptographyClient::RemoveKeyReplicationRegions(

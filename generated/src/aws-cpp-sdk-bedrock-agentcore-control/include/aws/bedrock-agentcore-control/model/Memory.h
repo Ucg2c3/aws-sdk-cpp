@@ -5,6 +5,7 @@
 
 #pragma once
 #include <aws/bedrock-agentcore-control/BedrockAgentCoreControl_EXPORTS.h>
+#include <aws/bedrock-agentcore-control/model/IndexedKey.h>
 #include <aws/bedrock-agentcore-control/model/MemoryStatus.h>
 #include <aws/bedrock-agentcore-control/model/MemoryStrategy.h>
 #include <aws/bedrock-agentcore-control/model/StreamDeliveryResources.h>
@@ -256,6 +257,31 @@ class Memory {
 
   ///@{
   /**
+   * <p>The indexed metadata keys for this memory. Only indexed keys can be used in
+   * metadata filters.</p>
+   */
+  inline const Aws::Vector<IndexedKey>& GetIndexedKeys() const { return m_indexedKeys; }
+  inline bool IndexedKeysHasBeenSet() const { return m_indexedKeysHasBeenSet; }
+  template <typename IndexedKeysT = Aws::Vector<IndexedKey>>
+  void SetIndexedKeys(IndexedKeysT&& value) {
+    m_indexedKeysHasBeenSet = true;
+    m_indexedKeys = std::forward<IndexedKeysT>(value);
+  }
+  template <typename IndexedKeysT = Aws::Vector<IndexedKey>>
+  Memory& WithIndexedKeys(IndexedKeysT&& value) {
+    SetIndexedKeys(std::forward<IndexedKeysT>(value));
+    return *this;
+  }
+  template <typename IndexedKeysT = IndexedKey>
+  Memory& AddIndexedKeys(IndexedKeysT&& value) {
+    m_indexedKeysHasBeenSet = true;
+    m_indexedKeys.emplace_back(std::forward<IndexedKeysT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
    * <p>Configuration for streaming memory record data to external resources.</p>
    */
   inline const StreamDeliveryResources& GetStreamDeliveryResources() const { return m_streamDeliveryResources; }
@@ -296,6 +322,8 @@ class Memory {
 
   Aws::Vector<MemoryStrategy> m_strategies;
 
+  Aws::Vector<IndexedKey> m_indexedKeys;
+
   StreamDeliveryResources m_streamDeliveryResources;
   bool m_arnHasBeenSet = false;
   bool m_idHasBeenSet = false;
@@ -309,6 +337,7 @@ class Memory {
   bool m_createdAtHasBeenSet = false;
   bool m_updatedAtHasBeenSet = false;
   bool m_strategiesHasBeenSet = false;
+  bool m_indexedKeysHasBeenSet = false;
   bool m_streamDeliveryResourcesHasBeenSet = false;
 };
 

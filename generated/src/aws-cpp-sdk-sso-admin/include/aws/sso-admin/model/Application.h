@@ -128,6 +128,25 @@ class Application {
 
   ///@{
   /**
+   * <p>The ARN of the identity store that is connected to the instance of IAM
+   * Identity Center.</p>
+   */
+  inline const Aws::String& GetIdentityStoreArn() const { return m_identityStoreArn; }
+  inline bool IdentityStoreArnHasBeenSet() const { return m_identityStoreArnHasBeenSet; }
+  template <typename IdentityStoreArnT = Aws::String>
+  void SetIdentityStoreArn(IdentityStoreArnT&& value) {
+    m_identityStoreArnHasBeenSet = true;
+    m_identityStoreArn = std::forward<IdentityStoreArnT>(value);
+  }
+  template <typename IdentityStoreArnT = Aws::String>
+  Application& WithIdentityStoreArn(IdentityStoreArnT&& value) {
+    SetIdentityStoreArn(std::forward<IdentityStoreArnT>(value));
+    return *this;
+  }
+  ///@}
+
+  ///@{
+  /**
    * <p>The current status of the application in this instance of IAM Identity
    * Center.</p>
    */
@@ -227,6 +246,8 @@ class Application {
 
   Aws::String m_instanceArn;
 
+  Aws::String m_identityStoreArn;
+
   ApplicationStatus m_status{ApplicationStatus::NOT_SET};
 
   PortalOptions m_portalOptions;
@@ -241,6 +262,7 @@ class Application {
   bool m_nameHasBeenSet = false;
   bool m_applicationAccountHasBeenSet = false;
   bool m_instanceArnHasBeenSet = false;
+  bool m_identityStoreArnHasBeenSet = false;
   bool m_statusHasBeenSet = false;
   bool m_portalOptionsHasBeenSet = false;
   bool m_descriptionHasBeenSet = false;

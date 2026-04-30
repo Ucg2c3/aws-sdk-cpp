@@ -42,6 +42,10 @@ DescribeApplicationResult& DescribeApplicationResult::operator=(const Aws::Amazo
     m_instanceArn = jsonValue.GetString("InstanceArn");
     m_instanceArnHasBeenSet = true;
   }
+  if (jsonValue.ValueExists("IdentityStoreArn")) {
+    m_identityStoreArn = jsonValue.GetString("IdentityStoreArn");
+    m_identityStoreArnHasBeenSet = true;
+  }
   if (jsonValue.ValueExists("Status")) {
     m_status = ApplicationStatusMapper::GetApplicationStatusForName(jsonValue.GetString("Status"));
     m_statusHasBeenSet = true;
